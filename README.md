@@ -16,9 +16,11 @@
 
 # <p align="center"> Find out more?
 
-[ReVanced history](https://github.com/kevinr99089/ReVanced.Builder/blob/History/README.md)
+[What is ReVanced](https://github.com/kevinr99089/ReVanced.Builder/blob/main/revanced.md)
 
-[Installing ReVanced](https://github.com/kevinr99089/ReVanced.Builder/blob/install/README.md)
+[ReVanced history](https://github.com/kevinr99089/ReVanced.Builder/blob/main/history.md)
+
+[Installing ReVanced](https://github.com/kevinr99089/ReVanced.Builder/blob/main/install.md)
 
 #
 
