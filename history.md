@@ -1,25 +1,14 @@
-# History of ReVanced
+# <p align="center"> History of ReVanced
 
-Originally, YouTube Vanced was an application that allowed you to have the features of YouTube Premium for free, in including an ad blocker, Picture in Picture, and adding features such as Sponsorblock and, for the last update, Return YouTube Dislikes (RYD)
-But March 13, 2022 was an unfortunate date, Team Vanced announced the end of YouTube Vanced support due to a letter from Google.
-For several weeks many users wondered how they would continue to enjoy its useful features, they added a few minutes later that the application would work for another 2 years before becoming obsolete about
-(Which is still working now, but the integrated ad blocker is not working properly anymore)
 
-A few days later (March 21, 2022), in the shadow, ReVanced work hard to have the same functionality as YouTube Vanced, the only difference is that you have to patch the application yourself,
-That's why Google sent a cease and desist letter to Vanced: it's legal to modify an application for personal use, but illegal to share this modified application, that's the mistake Team Vanced made
-This is the ingenuity of its spiritual successor ReVanced, rather than proposing the modified version of YouTube directly in free download, not only, they remain legal, but in addition, one has a control of the patches to apply.
-(I agree, it is contradictory with what this fork proposes, but in these cases, it is me who may have problems, not them)
+Originally, YouTube Vanced was an application that let you have the features of YouTube Premium for free, including an ad blocker, Picture in Picture, and adding features such as Sponsorblock and, for the latest update, Return YouTube Dislikes (RYD). But March 13, 2022 was an unfortunate date, as Team Vanced announced the end of YouTube Vanced support due to a formal notice letter received from Google. For several weeks, many users wondered how they would continue to enjoy its useful features, with Team Vanced adding on Twitter a little later that the application would work for another 2 years before becoming obsolete (which still works now, but the integrated ad blocker no longer works properly).
 
-After a lot of hard work in the last months, on June 5, 2022, the first version of ReVanced is available.
+A few days later (March 21, 2022) after the end announcement, ReVanced is working hard to have the same functionality as YouTube Vanced, the only difference is that it's open source and you have to patch the application yourself, which is why Vanced had to stop developing Vanced: it's legal to modify an application for personal use, but illegal to share a modified application, that's the mistake Team Vanced made and that's the ingenuity of its spiritual successor ReVanced, rather than offering the modified version of YouTube directly as a free download, not only do they remain legal, but we have control over which patches to apply. (I agree, it's contradictory to what this repository offers, but in these cases, it's me who's likely to get into trouble, not them).
 
-Later, ReVanced proposes to patch directly YouTube Vanced to update the adblocker list
-And also offer YouTube Music.
+After a lot of hard work, the first version of ReVanced was released on June 5, 2022. Subsequently, ReVanced offers to patch YouTube Vanced to update the adblocker list and, still later, ReVanced offers their modified versions of YouTube Music.
 
-In addition to creating patches for YouTube, YT Music and Vanced, ReVanced diversifies by offering patches for other applications.
+In addition to creating patches for YouTube, YT Music and Vanced, ReVanced is diversifying by offering patches for other applications. But as I write these lines, YouTube Vanced is no longer working, so it's time to move on: ReVanced now offers a large majority of the patches that Vanced does, for a more recent version of YouTube, and, since the project is open-source, it's even safer to use than YouTube Vanced.
 
-But as i write this, there have been a lot of updates to YouTube, a lot of features have been added, which makes Vanced contain more and more bugs, from time to time, some users complain that Vanced doesn't work anymore because the application asks to be updated or the ads are not blocked anymore.
-This makes Vanced not safe to use anymore (Security problems, update problems, missing features).
-
-I thank [Team Vanced](https://github.com/TeamVanced) for creating YouTube Vanced and [ReVanced](https://github.com/revanced) for [resurrecting Vanced](https://github.com/revanced).
+I thanks [Team Vanced](https://github.com/TeamVanced) for creating YouTube Vanced and Vanced Music, and [Team ReVanced](https://github.com/ReVanced) for resurrecting Vanced with YouTube ReVanced and YT Music, and diversifying.
 
 You deserve more popularity.
