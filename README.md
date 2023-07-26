@@ -8,15 +8,13 @@
 
 - YouTube (RV), YouTube Music (RV) arm64-v8a, Twitch (RV), TikTok (RV), Messenger (RV) arm64-v8a and NYX (RV) arm64-v8a.
 
-#### View [applied patches](https://github.com/kevinr99089/ReVanced.Builder/blob/main/config.toml). We're currently at the [![GitHub release](https://img.shields.io/github/release/kevinr99089/ReVanced.Builder.svg)](https://GitHub.com/kevinr99089/ReVanced.Builder/releases/latest) for [![GitHub dnlds](https://img.shields.io/github/downloads/kevinr99089/ReVanced.Builder/total)](https://GitHub.com/kevinr99089/ReVanced.Builder/releases/latest).
-
-#### 
+#### View [applied patches](https://github.com/kevinr99089/ReVanced.Builder/blob/main/config.toml). We're currently at the [![GitHub release](https://img.shields.io/github/v/release/kevinr99089/ReVanced.Builder?labelColor=black&color=blue)](https://gitHub.com/kevinr99089/ReVanced.Builder/releases/latest) for [![GitHub all releases](https://img.shields.io/github/downloads/kevinr99089/ReVanced.Builder/total?labelColor=black&color=blue)](https://gitHub.com/kevinr99089/ReVanced.Builder/releases/latest)
 
 #
 
 # <p align="center"> Find out more?
 
-[What is ReVanced](https://github.com/kevinr99089/ReVanced.Builder/blob/main/revanced.md)
+[What is ReVanced?](https://github.com/kevinr99089/ReVanced.Builder/blob/main/revanced.md)
 
 [ReVanced history](https://github.com/kevinr99089/ReVanced.Builder/blob/main/history.md)
 
@@ -29,11 +27,15 @@
 
 [ReVanced](https://github.com/revanced) for [ReVanced Patches](https://github.com/revanced/revanced-patches/tree/main) and [ReVanced Manager](https://github.com/revanced/revanced-manager/releases).
 
+# 
 
-#
+# <p align="center"> Last word:
 
 English not being my native language, I apologize for any errors.
 
-This Fork is dedicated to ReVanced builds, if you're looking for ReVanced builds, please visit: [Extended.Builder](https://github.com/kevinr99089/Extended.Builder)
+This Fork is dedicated to ReVanced builds, if you're looking for Extended builds, please visit: [Extended.Builder](https://github.com/kevinr99089/Extended.Builder)
 
 #
+
+<p align="right"> ReVanced is owned by ReVanced Team, no rights reserved.
+
