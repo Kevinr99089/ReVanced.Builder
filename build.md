@@ -1,11 +1,11 @@
 YouTube: 18.23.35  
-YT_Music: 6.13.52  
+YT_Music: 6.16.52  
 Twitch: 15.4.1  
-TikTok: 30.6.4  
-Messenger: 419.0.0.10.49  
+TikTok: 31.0.4  
+Messenger: 423.0.0.25.113  
 NyxMusicPlayer: 2.2.7  
 CLI: j-hc/revanced-cli-2.23.0-all.jar  
-Integrations: ReVanced/revanced-integrations-0.115.0.apk  
+Integrations: ReVanced/revanced-integrations-0.115.1.apk  
 Patches: ReVanced/revanced-patches-2.187.0.jar  
 
 ### [2.187.0](https://github.com/ReVanced/revanced-patches/compare/v2.186.0...v2.187.0) (2023-08-02)
