@@ -18,6 +18,10 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/facebook-2/messenger/"
 apkmirror-arch = "arm64-v8a"
 apkmirror-dpi = "360-480dpi"
 
+[Lightroom] # All recommended patchs are applied.
+apkmirror-dlurl = "https://www.apkmirror.com/apk/adobe/lightroom/"
+apkmirror-arch = "arm64-v8a"
+
 [NyxMusicPlayer] # All recommended patchs are applied.
 apkmirror-dlurl = "https://www.apkmirror.com/apk/awedea/nyx-music-player/"
 apkmirror-arch = "arm64-v8a"
