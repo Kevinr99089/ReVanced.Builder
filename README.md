@@ -2,7 +2,7 @@
 
 ###  <p align="center"> ⚠️[I am NOT ReVanced Team](https://github.com/j-hc/revanced-magisk-module/blob/main/README.md#%EF%B8%8F-do-not-download-modules-from-3rd-party-sources-like-random-websites-you-found-on-google-there-are-many-that-uses-my-modules-and-impersonates-revanced), this repository is not hosted or supported by them, please [support their work](https://github.com/revanced).
 
-## <p align="center"> Attention: this repository will be archived on September 01 until further notice.
+## <p align="center"> Attention: This repository has been archived until further notice.
 
 #
 
