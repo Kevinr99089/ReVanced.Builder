@@ -1,17 +1,16 @@
-YouTube: 18.23.35  
+YouTube: 18.32.39  
 YT_Music: 6.16.52  
 Twitch: 15.4.1  
 TikTok: 31.0.4  
 Messenger: 423.0.0.25.113  
-Lightroom: 8.5.0  
 NyxMusicPlayer: 2.2.7  
-CLI: j-hc/revanced-cli-2.23.0-all.jar  
-Integrations: ReVanced/revanced-integrations-0.116.1.apk  
-Patches: ReVanced/revanced-patches-2.188.1.jar  
+CLI: j-hc/revanced-cli-3.0.1-all.jar  
+Integrations: ReVanced/revanced-integrations-0.117.0.apk  
+Patches: ReVanced/revanced-patches-2.189.0.jar  
 
-#### [2.188.1](https://github.com/ReVanced/revanced-patches/compare/v2.188.0...v2.188.1) (2023-08-27)
-### Bug Fixes
-* Revert previous release ([ed24a20](https://github.com/ReVanced/revanced-patches/commit/ed24a201a9fbe08dd6694582d0ab08ced8ad026a))
+### [2.189.0](https://github.com/ReVanced/revanced-patches/compare/v2.188.1...v2.189.0) (2023-08-27)
+### Features
+* Restore previous release ([f7352fe](https://github.com/ReVanced/revanced-patches/commit/f7352feb6e9604162b52072d74310b9e3067bc69))
 
 ---  
 
