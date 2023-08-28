@@ -1,6 +1,7 @@
 YouTube: 18.32.39  
 YT_Music: 6.16.52  
 Twitch: 15.4.1  
+TikTok: 31.0.5  
 Messenger: 423.0.0.25.113  
 Lightroom: 8.5.1  
 NyxMusicPlayer: 2.2.7  
