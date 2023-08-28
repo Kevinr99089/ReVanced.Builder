@@ -20,7 +20,7 @@ apkmirror-dpi = "360-480dpi"
 
 [Lightroom] # All recommended patchs are applied.
 apkmirror-dlurl = "https://www.apkmirror.com/apk/adobe/lightroom/"
-apkmirror-arch = "arm64-v8a"
+apkmirror-arch = "arm64-v8a + x86_64"
 
 [NyxMusicPlayer] # All recommended patchs are applied.
 apkmirror-dlurl = "https://www.apkmirror.com/apk/awedea/nyx-music-player/"
