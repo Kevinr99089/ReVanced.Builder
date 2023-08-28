@@ -24,7 +24,6 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/adobe/lightroom/"
 apkmirror-arch = "arm64-v8a + x86_64"
 
 [NyxMusicPlayer] # All recommended patchs are applied.
-enabled = false # Temporarily disabled because no longer working.
 apkmirror-dlurl = "https://www.apkmirror.com/apk/awedea/nyx-music-player/"
 apkmirror-arch = "arm64-v8a"
 
