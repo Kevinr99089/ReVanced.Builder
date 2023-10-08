@@ -1,8 +1,8 @@
 #⚠️only non-root builds. 
 
 [YouTube] # All recommended patchs are applied, Except (Line 5):
-uptodown-dlurl = "https://youtube.fr.uptodown.com/android"
 excluded-patches = "Hide cast button Hide watermark Swipe controls"
+uptodown-dlurl = "https://youtube.fr.uptodown.com/android"
 
 [Music] # All recommended patchs are applied.
 uptodown-dlurl = "https://youtube-music.fr.uptodown.com/android"
