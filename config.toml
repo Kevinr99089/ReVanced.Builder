@@ -1,31 +1,26 @@
 #⚠️only non-root builds. 
 
-[YouTube] # All recommended patchs are applied.
-apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube/"
+[YouTube] # All recommended patchs are applied, Except (Line 5):
+uptodown-dlurl = "https://youtube.fr.uptodown.com/android"
+excluded-patches = "Hide cast button Hide watermark Swipe controls"
 
-[YT_Music] # All recommended patchs are applied.
-apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music/"
-apkmirror-arch = "arm64-v8a"
+[Music] # All recommended patchs are applied.
+uptodown-dlurl = "https://youtube-music.fr.uptodown.com/android"
 
 [Twitch] # All recommended patchs are applied.
-apkmirror-dlurl = "https://www.apkmirror.com/apk/twitch-interactive-inc/twitch/"
+uptodown-dlurl = "https://twitch-app.fr.uptodown.com/android"
 
 [TikTok] # All recommended patchs are applied, if TikTok is banned in France or the USA, patches will be disabled, temporarily or permanently.
-apkmirror-dlurl = "https://www.apkmirror.com/apk/tiktok-pte-ltd/tik-tok-including-musical-ly/"
-apkmirror-arch = "arm64-v8a + armeabi-v7a"
+uptodown-dlurl = "https://tiktok.fr.uptodown.com/android"
 
 [Messenger] # All recommended patchs are applied.
-apkmirror-dlurl = "https://www.apkmirror.com/apk/facebook-2/messenger/"
-apkmirror-arch = "arm64-v8a"
-apkmirror-dpi = "360-480dpi"
+uptodown-dlurl = "https://facebook-messenger.fr.uptodown.com/android"
 
 [Lightroom] # All recommended patchs are applied.
-apkmirror-dlurl = "https://www.apkmirror.com/apk/adobe/lightroom/"
-apkmirror-arch = "arm64-v8a + x86_64"
+uptodown-dlurl = "https://adobe-lightroom-mobile.fr.uptodown.com/android"
 
 [NyxMusicPlayer] # All recommended patchs are applied.
-apkmirror-dlurl = "https://www.apkmirror.com/apk/awedea/nyx-music-player/"
-apkmirror-arch = "arm64-v8a"
+uptodown-dlurl = "https://nyx-music-player.fr.uptodown.com/android"
 
 # I would add applications based on the popularity of an application and the number of patches to be applied.
 # I'd disable applications that haven't received support for a newer version, and patches that haven't been updated in a while.

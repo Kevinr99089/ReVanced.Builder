@@ -40,4 +40,3 @@ This Fork is dedicated to ReVanced builds, if you're looking for Extended builds
 #
 
 <p align="right"> ReVanced is owned by ReVanced Team, no rights reserved.
-
