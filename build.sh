@@ -113,7 +113,9 @@ for table_name in $(toml_get_table_names); do
 	app_args[rv_brand]=$(toml_get "$t" rv-brand) || app_args[rv_brand]="$DEF_RV_BRAND"
 
 	app_args[excluded_patches]=$(toml_get "$t" excluded-patches) || app_args[excluded_patches]=""
+	if [ -n "${app_args[excluded_patches]}" ] && [[ "${app_args[excluded_patches]}" != *'"'* ]]; then abort "patch names inside excluded-patches must be quoted"; fi
 	app_args[included_patches]=$(toml_get "$t" included-patches) || app_args[included_patches]=""
+	if [ -n "${app_args[included_patches]}" ] && [[ "${app_args[included_patches]}" != *'"'* ]]; then abort "patch names inside included-patches must be quoted"; fi
 	app_args[exclusive_patches]=$(toml_get "$t" exclusive-patches) && vtf "${app_args[exclusive_patches]}" "exclusive-patches" || app_args[exclusive_patches]=false
 	app_args[version]=$(toml_get "$t" version) || app_args[version]="auto"
 	app_args[app_name]=$(toml_get "$t" app-name) || app_args[app_name]=$table_name
@@ -178,9 +180,13 @@ if [ -z "$(ls -A1 ${BUILD_DIR})" ]; then abort "All builds failed."; fi
 if youtube_t=$(toml_get_table "YouTube"); then youtube_mode=$(toml_get "$youtube_t" "build-mode") || youtube_mode="apk"; else youtube_mode="module"; fi
 if music_t=$(toml_get_table "Music"); then music_mode=$(toml_get "$music_t" "build-mode") || music_mode="apk"; else music_mode="module"; fi
 if [ "$youtube_mode" != module ] || [ "$music_mode" != module ]; then
-	log "$(cat $TEMP_DIR/*-rv/changelog.md)"
+	log "\nInstall [Vanced Microg](https://github.com/TeamVanced/VancedMicroG/releases) for non-root YouTube and YT Music"
 fi
-log "\nInstall [Vanced MicroG](https://github.com/WSTxda/MicroG-RE/releases/latest) to be able to use non-root YouTube or Music"
-log "\nSee [builds for Extended](https://github.com/kevinr99089/Extended.Builder/releases/latest)."
+if [ "$youtube_mode" != apk ] || [ "$music_mode" != apk ]; then
+	log "Use [zygisk-detach](https://github.com/j-hc/zygisk-detach) module to detach YouTube and YT Music from Play Store"
+fi
+log "\n[revanced-magisk-module](https://github.com/j-hc/revanced-magisk-module)"
+log "\nChangelog:"
+log "$(cat $TEMP_DIR/*-rv/changelog.md)"
 
 pr "Done"
