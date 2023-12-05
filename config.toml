@@ -1,17 +1,17 @@
 #⚠️only non-root builds. 
 
-[YouTube] # All recommended patchs are applied, Except (Line 5):
-apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube/"
+[YouTube] # All recommended patchs are applied, Except (Line 4):
 excluded-patches = "'Hide cast button' 'Hide watermark' 'Swipe controls'"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube/"
 
 [Music] # All recommended patchs are applied.
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music/"
 apkmirror-arch = "arm64-v8a"
 
 [Twitch] # All recommended patchs are applied.
-archive-dlurl = "https://archive.org/download/jhc-apks/apks/tv.twitch.android.app/"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/twitch-interactive-inc/"
 
-[TikTok] # All recommended patchs are applied, if TikTok is banned in France or the USA, patches will be disabled, temporarily or permanently.
+[TikTok] # All recommended patchs are applied, if TikTok is banned in France or USA, patches will be disabled.
 apkmirror-dlurl = "https://www.apkmirror.com/apk/tiktok-pte-ltd/tik-tok-including-musical-ly/"
 apkmirror-arch = "arm64-v8a + armeabi-v7a"
 
@@ -20,12 +20,6 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/facebook-2/messenger/"
 apkmirror-arch = "arm64-v8a"
 
 [Lightroom] # All recommended patchs are applied.
-archive-dlurl = "https://archive.org/download/jhc-apks/apks/com.adobe.lrmobile/"
+enabled = false
+apkmirror-dlurl = "https://www.apkmirror.com/apk/adobe/lightroom/"
 apkmirror-arch = "arm64-v8a"
-
-[NyxMusicPlayer] # All recommended patchs are applied.
-apkmirror-dlurl = "https://www.apkmirror.com/apk/awedea/nyx-music-player/"
-apkmirror-arch = "arm64-v8a"
-
-# I would add applications based on the popularity of an application and the number of patches to be applied.
-# I'd disable applications that haven't received support for a newer version, and patches that haven't been updated in a while.
