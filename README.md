@@ -29,7 +29,7 @@
 
 # 
 
-#### <p align="center"> Check out my other repository: [Extended](https://github.com/kevinr99089/Extended.Builder/releases), [Builder](https://github.com/kevinr99089/Builder/releases).
+#### <p align="center"> Check out my other repository: [Extended](https://github.com/kevinr99089/Extended.Builder/releases).
 
 #
 
