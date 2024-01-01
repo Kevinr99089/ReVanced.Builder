@@ -44,7 +44,7 @@ jobs:
           if [ -z "$TAG" ]; then TAG=0; fi
           echo "NEXT_VER_CODE=$((TAG + 1))" >> $GITHUB_OUTPUT
 
-      - name: Build modules/APKs
+      - name: Build modules/ReVanced
         run: ./build.sh config.toml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

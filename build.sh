@@ -146,7 +146,7 @@ for table_name in $(toml_get_table_names); do
 		app_args[dl_from]=archive
 	} || app_args[archive_dlurl]=""
 	if [ -z "${app_args[dl_from]:-}" ]; then abort "ERROR: no 'apkmirror_dlurl', 'uptodown_dlurl' or 'apkmonk_dlurl' option was set for '$table_name'."; fi
-	app_args[arch]=$(toml_get "$t" apkmirror-arch) || app_args[arch]="all"
+	app_args[arch]=$(toml_get "$t" arch) || app_args[arch]="all"
 	if [ "${app_args[arch]}" != "both" ] && [ "${app_args[arch]}" != "all" ] && [[ "${app_args[arch]}" != "arm64-v8a"* ]] && [[ "${app_args[arch]}" != "arm-v7a"* ]]; then
 		abort "wrong arch '${app_args[arch]}' for '$table_name'"
 	fi
@@ -179,15 +179,15 @@ wait
 rm -rf temp/tmp.*
 if [ -z "$(ls -A1 ${BUILD_DIR})" ]; then abort "All builds failed."; fi
 
-if youtube_t=$(toml_get_table "YouTube"); then youtube_mode=$(toml_get "$youtube_t" "build-mode") || youtube_mode="apk"; else youtube_mode="module"; fi
-if music_t=$(toml_get_table "Music"); then music_mode=$(toml_get "$music_t" "build-mode") || music_mode="apk"; else music_mode="module"; fi
-if [ "$youtube_mode" != module ] || [ "$music_mode" != module ]; then
-	log "\nInstall [Vanced MicroG](https://github.com/WSTxda/MicroG-RE/releases/latest) to be able to use non-root YouTube or Music"
-fi
-if [ "$youtube_mode" != apk ] || [ "$music_mode" != apk ]; then
-	log "\nInstall [Vanced MicroG](https://github.com/WSTxda/MicroG-RE/releases/latest) to be able to use non-root YouTube or Music"
-fi
 log "$(cat $TEMP_DIR/*-rv/changelog.md)"
+log "\nInstall [Vanced MicroG](https://github.com/WSTxda/MicroG-RE/releases/latest) for use non-root YouTube and Music"
 log "\nSee [builds for Extended](https://github.com/kevinr99089/Extended.Builder/releases/latest)."
+
+SKIPPED=$(cat $TEMP_DIR/skipped 2>/dev/null || :)
+if [ -n "$SKIPPED" ]; then
+	log "\nSkipped:"
+	log "$SKIPPED"
+fi
+
 
 pr "Done"
