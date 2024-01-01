@@ -180,7 +180,7 @@ rm -rf temp/tmp.*
 if [ -z "$(ls -A1 ${BUILD_DIR})" ]; then abort "All builds failed."; fi
 
 log "$(cat $TEMP_DIR/*-rv/changelog.md)"
-log "\nInstall [Vanced MicroG](https://github.com/WSTxda/MicroG-RE/releases/latest) for use non-root YouTube and Music"
+log "\nInstall [MicroG](https://github.com/WSTxda/MicroG-RE/releases/latest) for use non-root YouTube and Music"
 log "\nSee [builds for Extended](https://github.com/kevinr99089/Extended.Builder/releases/latest)."
 
 SKIPPED=$(cat $TEMP_DIR/skipped 2>/dev/null || :)
