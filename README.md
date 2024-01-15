@@ -6,7 +6,7 @@
 
 # <p align="center"> Available apps:
 
-<p align="center"> YouTube (RV), YouTube Music (RV) arm64-v8a, Twitch (RV), TikTok (RV) and Messenger (RV) arm64-v8a.
+<p align="center"> YouTube (RV), YouTube Music (RV) arm64-v8a and TikTok (RV).
 
 #### <p align="center"> View [applied patches](https://github.com/kevinr99089/ReVanced.Builder/blob/main/config.toml). We are currently at the [![GitHub release](https://img.shields.io/github/v/release/kevinr99089/ReVanced.Builder?labelColor=black&color=blue)](https://gitHub.com/kevinr99089/ReVanced.Builder/releases/latest) for [![GitHub all releases](https://img.shields.io/github/downloads/kevinr99089/ReVanced.Builder/total?labelColor=black&color=blue)](https://gitHub.com/kevinr99089/ReVanced.Builder/releases/latest).
 
