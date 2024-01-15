@@ -8,18 +8,6 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube/"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music/"
 arch = "arm64-v8a"
 
-[Twitch] # All recommended patchs are applied.
-apkmirror-dlurl = "https://www.apkmirror.com/apk/twitch-interactive-inc/"
-
 [TikTok] # All recommended patchs are applied, if TikTok is banned in France or USA, patches will be disabled.
 apkmirror-dlurl = "https://www.apkmirror.com/apk/tiktok-pte-ltd/tik-tok-including-musical-ly/"
 arch = "arm64-v8a + armeabi-v7a"
-
-[Messenger] # All recommended patchs are applied.
-apkmirror-dlurl = "https://www.apkmirror.com/apk/facebook-2/messenger/"
-arch = "arm64-v8a"
-
-[Lightroom] # All recommended patchs are applied.
-enabled = false
-apkmirror-dlurl = "https://www.apkmirror.com/apk/adobe/lightroom/"
-arch = "arm64-v8a"
