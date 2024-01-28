@@ -1,10 +1,10 @@
 YouTube: 19.03.35  
-TikTok: 32.5.3  
 Music: 6.36.54  
+TikTok: 32.5.3  
 CLI: j-hc/revanced-cli-4.3.0-all.jar  
-Integrations: ReVanced/revanced-integrations-1.2.0.apk  
-Patches: ReVanced/revanced-patches-4.0.1.jar  
-[Changelog](https://github.com/ReVanced/revanced-patches/releases/tag/v4.0.1)  
+Integrations: ReVanced/revanced-integrations-1.2.1.apk  
+Patches: ReVanced/revanced-patches-4.0.2.jar  
+[Changelog](https://github.com/ReVanced/revanced-patches/releases/tag/v4.0.2)  
 
 Install [MicroG](https://github.com/WSTxda/MicroG-RE/releases/latest) for use non-root YouTube and Music  
 
