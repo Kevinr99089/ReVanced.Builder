@@ -1,4 +1,4 @@
-#⚠️only non-root builds. 
+# ⚠️ only non-root builds. 
 
 [YouTube] # Default patchs are applied (+ Line 4), Except (Line 5):
 inclused-patches = "'Custom branding' 'Change header'"
