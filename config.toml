@@ -1,9 +1,10 @@
 #⚠️only non-root builds. 
 
-[YouTube] # All recommended patchs are applied, Except (Line 4):
+[YouTube] # All default patchs are applied (+ Line 4), Except (Line 5):
+inclused-patches = "'Custom branding' 'Change header'"
 excluded-patches = "'Hide cast button' 'Hide watermark' 'Swipe controls'"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube/"
 
-[Music] # All recommended patchs are applied.
+[Music] # All default patchs are applied.
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music/"
 arch = "arm64-v8a"
