@@ -16,6 +16,10 @@ I thank [Vanced team](https://github.com/TeamVanced) for creating YouTube Vanced
 
 You deserve more recognition (but not too much either).
 
+# <p align="center"> Warning !
+
 Please note: ReVanced does NOT share any patched applications, nor does it recommend the use of any ready-made download sites. I don't recommend it either, as applications downloaded from third-party sites may contain malicious code. The only solution is to use ReVanced Manager or ReVancify. No site is 100% safe.
+
+# <p align="center"> So why am i using this repository ?
 
 I'd rather be clear with you: This repository is not tolerated by ReVanced, nor are all similar repositories, for [DMCA](https://en.m.wikipedia.org/wiki/Digital_Millennium_Copyright_Act) reasons. I opened it for personal use. If ReVanced Team sees this message: I'd like to apologize for using this kind of solution, it's for simplicity and automation. I can delete this repository if you ask me to, but please note that I don't use it to share applications or to include malicious code.
