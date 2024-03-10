@@ -1,6 +1,6 @@
 # <p align="center"> What is ReVanced?
 
-ReVanced (or RV), like Extended, is an app modified of YouTube and YouTube Music  that lets you add many functions not present natively, such as Sponsorblock (which lets you add a function to skip parts of a video like sponsors, intros, outros and many others) or Return YouTube Dislikes (which lets you restore the Dislikes counter on videos, useful for quickly checking whether a video is worth watching or not). and other functions that let you hide ads, hide shorts, hide the create button, change the home page when the app starts and much more, all of which can be enabled or disabled, so you can choose what you want to enable or disable to suit your use of the app.
+RV, for ReVanced, like Extended, is an app modified of YouTube and YouTube Music  that lets you add many functions not present natively, such as Sponsorblock (which lets you add a function to skip parts of a video like sponsors, intros, outros and many others) or Return YouTube Dislikes (which lets you restore the Dislikes counter on videos, useful for quickly checking whether a video is worth watching or not). and other functions that let you hide ads, hide shorts, hide the create button, change the home page when the app starts and much more, all of which can be enabled or disabled, so you can choose what you want to enable or disable to suit your use of the app.
 
 # <p align="center"> History of ReVanced:
 
