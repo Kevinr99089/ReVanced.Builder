@@ -1,18 +1,18 @@
 # <p align="center"> What is ReVanced?
 
-RV, for ReVanced, like Extended, is an app modified of YouTube and YouTube Music  that lets you add many functions not present natively, such as Sponsorblock (which lets you add a function to skip parts of a video like sponsors, intros, outros and many others) or Return YouTube Dislikes (which lets you restore the Dislikes counter on videos, useful for quickly checking whether a video is worth watching or not). and other functions that let you hide ads, hide shorts, hide the create button, change the home page when the app starts and much more, all of which can be enabled or disabled, so you can choose what you want to enable or disable to suit your use of the app.
+RV, for ReVanced, like Extended, is an app modified of YT and YT-Music  that lets you add many functions not present natively, such as Sponsorblock (which lets you add a function to skip parts of a video like sponsors, intros, outros and many others) or Return YT Dislikes (which lets you restore the Dislikes counter on videos, useful for quickly checking whether a video is worth watching or not). and other functions that let you hide ads, hide shorts, hide the create button, change the home page when the app starts and much more, all of which can be enabled or disabled, so you can choose what you want to enable or disable to suit your use of the app.
 
 # <p align="center"> History of ReVanced:
 
-YouTube Vanced was an app that allowed you to enjoy YouTube Premium features for free, including an ad blocker, Picture in Picture, and add features such as Sponsorblock and, since the last update, Return YouTube Dislikes (RYD). But March 13, 2022 was an unfortunate date, as the Vanced team announced the end of YouTube Vanced support following a cease-and-desist letter received by Google. For several weeks, many users wondered how they would be able to continue enjoying its useful features, with Team Vanced adding a little later on Twitter that the app would work for another 2 years before becoming obsolete (today, the app no longer works).
+YT Vanced was an app that allowed you to enjoy YT Premium features for free, including an ad blocker, Picture in Picture, and add features such as Sponsorblock and, since the last update, Return YT Dislikes (RYD). But March 13, 2022 was an unfortunate date, as the Vanced team announced the end of YT Vanced support following a cease-and-desist letter received by Google. For several weeks, many users wondered how they would be able to continue enjoying its useful features, with Team Vanced adding a little later on Twitter that the app would work for another 2 years before becoming obsolete (today, the app no longer works).
 
 A few days later (March 21, 2022), after announcing the end of the application, ReVanced was hard at work creating the same Vanced functions in order to make them open source, allowing you to apply patches yourself. And that's why Team Vanced had to stop developing Vanced: it's legal to modify an application for personal use, but illegal to share it. that's the mistake Team Vanced made. The ingenuity of its spiritual successor ReVanced, rather than offering applications for free download, not only keeps them legal, but gives us control over which patches to apply.
 
-After much hard work, the first version of ReVanced was released on June 5, 2022. Later, ReVanced offered patches for YouTube Music.
+After much hard work, the first version of ReVanced was released on June 5, 2022. Later, ReVanced offered patches for YT Music.
 
-Later, ReVanced diversified by offering patches for other applications. At present, YouTube Vanced no longer works and is no longer secure, so it's time to move on: ReVanced is now as complete as Vanced, but compatible with the latest versions of YouTube, and, as the project is open-source, it's even safer to use than YouTube Vanced.
+Later, ReVanced diversified by offering patches for other applications. At present, YT Vanced no longer works and is no longer secure, so it's time to move on: ReVanced is now as complete as Vanced, but compatible with the latest versions of YT, and, as the project is open-source, it's even safer to use than YT Vanced.
 
-I thank [Vanced team](https://github.com/TeamVanced) for creating YouTube Vanced and Vanced Music, and [ReVanced Team](https://github.com/ReVanced) for resurrecting Vanced with YouTube and YT Music, and diversifying.
+I thank [Vanced team](https://github.com/TeamVanced) for creating YT Vanced and Vanced Music, and [ReVanced Team](https://github.com/ReVanced) for resurrecting Vanced with YT and YT Music, and diversifying.
 
 You deserve more recognition (but not too much either).
 
