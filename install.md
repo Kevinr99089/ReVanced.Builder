@@ -1,6 +1,20 @@
 # <p align="center">How to install ReVanced apps?
 #### <p align="center">Please note that the signatures are different from ReVanced Manager. You will not be able to install these applications without uninstalling the application patched by RV Manager first (remember to export your settings before uninstalling it) (you can however update the applications present here, the signatures do not change).
 #
+
+### For installing with ReVanced Manager, please [follow this tutorial](https://mega.nz/file/7LxyjQwT#pVQ8jA_LKUhjAnz6KbfPLsp0wh2QfivGHHkPHFBZPxs)
+Links: [ReVanced Manager](https://github.com/ReVanced/revanced-manager/releases/latest), [MicroG](https://github.com/WSTxda/MicroG-RE/releases/latest).
+#
+### For installing with ReVancify, please [follow this tutorial](https://mega.nz/file/DOYkjZIT#eOBU1Ken6zVLloONCN-gvocBTSxpJ02C4LkdrnJoN04)
+Links: [Termux](https://github.com/KitsunedFox/termux-monet/releases/latest), [MicroG](https://github.com/WSTxda/MicroG-RE/releases/latest).
+
+Copy/Past this command: After installation, type ```revancify``` in termux and press enter.
+```console
+curl -sL "https://raw.githubusercontent.com/selfmusing/Revancify/main/install.sh" | bash
+```
+#
+<p align="center"> For installing with this builder, please follow this tutorial.
+    
 Scroll to the bottom of the [main page](https://github.com/kevinr99089/ReVanced.Builder)
     <img src=".github/Installation/01.png">
 
