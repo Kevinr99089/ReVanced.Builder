@@ -1,4 +1,7 @@
 # <p align="center"> Welcome to this repository dedicated to ReVanced Patches.
+
+## Attention: ReVanced releases will be moved to Extended.Builder on Sunday, March 31, using the same patches. Extended.Builder will be renamed, and this repository will be deleted on Tuesday, April 30.
+
 # <p align="center"> Available apps:
 <p align="center"> YT (RV) and YT-Music (RV) arm64-v8a.
 
