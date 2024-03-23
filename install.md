@@ -10,7 +10,7 @@ Links: [Termux](https://github.com/KitsunedFox/termux-monet/releases/latest), [M
 
 Copy/Past this command: After installation, type ```revancify``` in termux and press enter.
 ```console
-curl -sL "https://raw.githubusercontent.com/selfmusing/Revancify/main/install.sh" | bash
+curl -sL "https://raw.githubusercontent.com/decipher3114/Revancify/main/install.sh" | bash
 ```
 #
 <p align="center"> For installing with this builder, please follow this tutorial.
