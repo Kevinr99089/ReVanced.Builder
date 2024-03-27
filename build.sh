@@ -168,7 +168,7 @@ rm -rf temp/tmp.*
 if [ -z "$(ls -A1 ${BUILD_DIR})" ]; then abort "All builds failed."; fi
 
 log "$(cat $TEMP_DIR/*-rv/changelog.md)"
-log "\nInstall [MicroG](https://github.com/WSTxda/MicroG-RE/releases/latest) for use non-root YT and YT-Music"
+log "\nInstall [GmsCore](https://github.com/ReVanced/GmsCore/releases/latest) for use non-root YT and YT-Music"
 log "\nSee [builds for AdVanced (formerly Extended)](https://github.com/kevinr99089/Extended.Builder/releases/latest)."
 
 SKIPPED=$(cat $TEMP_DIR/skipped 2>/dev/null || :)
