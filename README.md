@@ -15,6 +15,6 @@
 - **[revanced](https://github.com/ReVanced), Creator of Mods for many applications.**
 
 > [!WARNING]
-> **I am NOT ReVanced Team, this repository is [not hosted or supported by them](https://github.com/kevinr99089/Extended.Builder/blob/main/history.md#-warning-), support their efforts.**
+> **I am NOT ReVanced Team, this repository is [not hosted or supported by them](https://github.com/kevinr99089/ReVanced.Builder/blob/main/history.md#-warning-), support their efforts.**
 
 ##### <p align="right"> **ReVanced is owned by ReVanced Team, no rights reserved.**
