@@ -31,7 +31,11 @@ jobs:
           if git checkout origin/update build.md; then
             UPDATE_CFG=$(./build.sh config.toml --config-update)
             if [ "$UPDATE_CFG" ]; then
+<<<<<<< HEAD
               echo "$UPDATE_CFG" > config.json
+=======
+              echo "$UPDATE_CFG" > config.toml
+>>>>>>> 71b9976 (Initial commit)
             fi
           fi
 
@@ -45,7 +49,11 @@ jobs:
           echo "NEXT_VER_CODE=$((TAG + 1))" >> $GITHUB_OUTPUT
 
       - name: Build modules/APKs
+<<<<<<< HEAD
         run: if [ -f "config.json" ]; then ./build.sh config.json; else ./build.sh config.toml; fi
+=======
+        run: ./build.sh config.toml
+>>>>>>> 71b9976 (Initial commit)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: $GITHUB_REPOSITORY
@@ -79,7 +87,11 @@ jobs:
           get_update_json() {
             echo "{
             \"version\": \"$1\",
+<<<<<<< HEAD
             \"versionCode\": ${{ steps.next_ver_code.outputs.NEXT_VER_CODE }},
+=======
+            \"versionCode\": ${{ steps.next_ver_code.outputs.NEXT_VER_CODE}},
+>>>>>>> 71b9976 (Initial commit)
             \"zipUrl\": \"$2\",
             \"changelog\": \"https://raw.githubusercontent.com/$GITHUB_REPOSITORY/update/build.md\"
           }"
