@@ -277,15 +277,9 @@ if [ -z "$(ls -A1 "${BUILD_DIR}")" ]; then abort "All builds failed."; fi
 if [ -z "$(ls -A1 ${BUILD_DIR})" ]; then abort "All builds failed."; fi
 >>>>>>> 71b9976 (Initial commit)
 
-log "\nInstall [Microg](https://github.com/ReVanced/GmsCore/releases) for non-root YouTube and YT Music APKs"
-log "Use [zygisk-detach](https://github.com/j-hc/zygisk-detach) to detach root ReVanced YouTube and YT Music from Play Store"
-log "\n[revanced-magisk-module](https://github.com/j-hc/revanced-magisk-module)\n"
-<<<<<<< HEAD
-log "$(cat "$TEMP_DIR"/*-rv/changelog.md)"
-
-SKIPPED=$(cat "$TEMP_DIR"/skipped 2>/dev/null || :)
-=======
 log "$(cat $TEMP_DIR/*-rv/changelog.md)"
+log "\nInstall the new [GMSCore](https://github.com/ReVanced/GmsCore/releases/latest) for use non-root YT/Music **(You NEED uninstall the old)**."
+log "\nSee [builds for Extended](https://github.com/kevinr99089/Extended.Builder/releases)."
 
 SKIPPED=$(cat $TEMP_DIR/skipped 2>/dev/null || :)
 >>>>>>> 71b9976 (Initial commit)
