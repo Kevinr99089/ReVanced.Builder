@@ -1,5 +1,8 @@
 # <p align="center"> Welcome to ReVanced.Builder🔧
 
+> [!NOTE]
+> You can recover old releases on [ReVanced.Builder.old](https://github.com/Kevinr99089/ReVanced.Builder.old).
+
 ## <p align="center"> Available apps :
 - YT (RV) and YT Music (RV).
 > View [applied patches](https://github.com/kevinr99089/ReVanced.Builder/blob/main/config.toml).
