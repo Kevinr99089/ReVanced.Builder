@@ -13,11 +13,10 @@
 - [Install ReVanced](https://github.com/kevinr99089/ReVanced.Builder/blob/main/install.md)
 
 ## <p align="center"> Thanks to :
+> [!NOTE]
+> **I am NOT ReVanced Team, this repository is [not hosted or supported by them](https://github.com/kevinr99089/ReVanced.Builder/blob/main/history.md#-warning-), support their efforts.**
 - **[j-hc](https://github.com/j-hc), Creator of this Module.**
 
 - **[revanced](https://github.com/ReVanced), Creator of Mods for many applications.**
-
-> [!WARNING]
-> **I am NOT ReVanced Team, this repository is [not hosted or supported by them](https://github.com/kevinr99089/ReVanced.Builder/blob/main/history.md#-warning-), support their efforts.**
-
+  
 ##### <p align="right"> **ReVanced is owned by ReVanced Team, no rights reserved.**
