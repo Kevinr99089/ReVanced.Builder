@@ -1,7 +1,7 @@
 # <p align="center"> Welcome to ReVanced.Builder🔧
 
 > [!NOTE]
-> You can recover old releases on [ReVanced.Builder.old](https://github.com/Kevinr99089/ReVanced.Builder.old).
+> [ReVanced.Builder.old](https://github.com/Kevinr99089/ReVanced.Builder.old) will be archived on May 31st and deleted on June 30th.
 
 ## <p align="center"> Available apps :
 - YT (RV) and YT Music (RV).
