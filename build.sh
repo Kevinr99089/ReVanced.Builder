@@ -278,7 +278,6 @@ if [ -z "$(ls -A1 ${BUILD_DIR})" ]; then abort "All builds failed."; fi
 >>>>>>> 71b9976 (Initial commit)
 
 log "$(cat $TEMP_DIR/*-rv/changelog.md)"
-log "\nInstall the new [GMSCore](https://github.com/ReVanced/GmsCore/releases/latest) for use non-root YT/Music **(You NEED uninstall the old)**."
 log "\nSee [builds for Extended](https://github.com/kevinr99089/Extended.Builder/releases)."
 
 SKIPPED=$(cat $TEMP_DIR/skipped 2>/dev/null || :)
