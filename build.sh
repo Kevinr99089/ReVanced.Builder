@@ -278,7 +278,7 @@ if [ -z "$(ls -A1 ${BUILD_DIR})" ]; then abort "All builds failed."; fi
 >>>>>>> 71b9976 (Initial commit)
 
 log "$(cat $TEMP_DIR/*-rv/changelog.md)"
-log "\nFind all links on [README.md](https://github.com/Kevinr99089/ReVanced.Builder)."
+log "\nMore information and links on [README.md](https://github.com/Kevinr99089/ReVanced.Builder)."
 
 SKIPPED=$(cat $TEMP_DIR/skipped 2>/dev/null || :)
 >>>>>>> 71b9976 (Initial commit)
