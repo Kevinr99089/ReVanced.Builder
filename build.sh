@@ -278,7 +278,6 @@ if [ -z "$(ls -A1 ${BUILD_DIR})" ]; then abort "All builds failed."; fi
 >>>>>>> 71b9976 (Initial commit)
 
 log "$(cat $TEMP_DIR/*-rv/changelog.md)"
-log "\nSee [builds for Extended](https://github.com/kevinr99089/Extended.Builder/releases)."
 
 SKIPPED=$(cat $TEMP_DIR/skipped 2>/dev/null || :)
 >>>>>>> 71b9976 (Initial commit)
