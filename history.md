@@ -18,7 +18,7 @@ You deserve more recognition.
 
 # <p align="center"> Warning !
 
-Attention: ReVanced Team does NOT share any patched applications, nor does it recommend the use of any app ready-to-use from download sites. I don't recommend it either, as applications downloaded from third-party sites may contain malicious code. The only solution is to use [RV/X Manager](https://github.com/Kevinr99089/Extended.Builder/blob/main/install.md#for-installing-with-revanced-manager-please-follow-this-tutorial) or [ReVancify](https://github.com/Kevinr99089/Extended.Builder/blob/main/install.md#for-installing-with-revancify-please-follow-this-tutorial). No site is 100% safe.
+Attention: ReVanced Team does NOT share any patched applications, nor does it recommend the use of any app ready-to-use from download sites. I don't recommend it either, as applications downloaded from third-party sites may contain malicious code. The only solution is to use [RV/X Manager](https://github.com/Kevinr99089/ReVanced.Builder/blob/main/install.md#for-installing-with-revanced-manager-please-follow-this-tutorial) or [ReVancify](https://github.com/Kevinr99089/ReVanced.Builder/blob/main/install.md#for-installing-with-revancify-please-follow-this-tutorial). No site is 100% safe.
 
 # <p align="center"> So why am i using this repository ?
 
