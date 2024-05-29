@@ -11,12 +11,12 @@ Copy/Past this command: After installation, type ```revancify``` in termux and p
 curl -sL "https://raw.githubusercontent.com/decipher3114/Revancify/main/install.sh" | bash
 ```
 #
-### For installing with this builder, please [follow this tutorial](https://github.com/Kevinr99089/Extended.Builder/blob/main/install.md#for-installing-with-this-builder-please-follow-this-tutorial)
+### For installing with this builder, please [follow this tutorial](https://github.com/Kevinr99089/ReVanced.Builder/blob/main/install.md#for-installing-with-this-builder-please-follow-this-tutorial)
 
 > **The signatures are different from ReVanced Manager. You must uninstalling the application patched by RV Manager for use these releases (export your settings before uninstalling it).**
 #
 
-Go to [Releases](https://github.com/kevinr99089/Extended.Builder) page, scroll down and click on the application you want (For my exemple, YT-ReReX), then on GMSCore (required for use these mods):
+Go to [Releases](https://github.com/kevinr99089/ReVanced.Builder) page, scroll down and click on the application you want (For my exemple, YT-ReReX), then on GMSCore (required for use these mods):
 
 <img src=".github/Installation/03.png">
 
