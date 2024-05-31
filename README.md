@@ -1,8 +1,5 @@
 # <p align="center"> Welcome to ReVanced.Builder🔧
 
-> [!NOTE]
-> [ReVanced.Builder.old](https://github.com/Kevinr99089/ReVanced.Builder.old) will be deleted on June 30th.
-
 ## <p align="center"> Available apps :
 - YT (RV) and YT Music (RV).
 > To use these applications, you need to install [GMSCore](https://github.com/ReVanced/GmsCore/releases/latest). View [applied patches](https://github.com/kevinr99089/ReVanced.Builder/blob/main/config.toml).
