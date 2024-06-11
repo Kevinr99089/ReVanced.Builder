@@ -39,7 +39,6 @@ toml_get() {
 REBUILD=${REBUILD:-false}
 OS=$(uname -o)
 
-# -------------------- json/toml --------------------
 toml_prep() { __TOML__=$(tr -d '\t\r' <<<"$1" | tr "'" '"' | grep -o '^[^#]*' | grep -v '^$' | sed -r 's/(\".*\")|\s*/\1/g; 1i []'); }
 toml_get_table_names() {
 	local tn
@@ -579,12 +578,32 @@ get_uptodown_pkg_name() { $HTMLQ --text "tr.full:nth-child(1) > td:nth-child(3)"
 =======
 	local uptodown_dlurl=$1 version=$2 output=$3
 	local url
-	url=$(grep -F "${version}</span>" -B 2 <<<"$__UPTODOWN_RESP__" | head -1 | sed -n 's;.*data-url=".*download\/\(.*\)".*;\1;p') || return 1
-	url="https://dw.uptodown.com/dwn/$(req "${uptodown_dlurl}/post-download/${url}" - | sed -n 's;.*class="post-download" data-url="\(.*\)".*;\1;p')" || return 1
+	if [ "$is_latest" = false ]; then
+		url=$(grep -F "${version}</span>" -B 2 <<<"$__UPTODOWN_RESP__" | head -1 | sed -n 's;.*data-url=".*download\/\(.*\)".*;\1;p') || return 1
+		url="/$url"
+	else url=""; fi
+	if [ "$arch" != all ]; then
+		local app_code data_version files node_arch content resp
+		if [ "$is_latest" = false ]; then
+			resp=$(req "${1}/download${url}" -)
+		else resp="$__UPTODOWN_RESP_PKG__"; fi
+		app_code=$($HTMLQ "#detail-app-name" --attribute code <<<"$resp")
+		data_version=$($HTMLQ "button.button:nth-child(2)" --attribute data-version <<<"$resp")
+		files=$(req "${uptodown_dlurl%/*}/app/${app_code}/version/${data_version}/files" - | jq -r .content)
+		for ((n = 1; n < 40; n++)); do
+			node_arch=$($HTMLQ ".content > p:nth-child($n)" --text <<<"$files" | xargs) || return 1
+			if [ -z "$node_arch" ]; then return 1; fi
+			if [ "$node_arch" != "$arch" ]; then continue; fi
+			content=$($HTMLQ "div.variant:nth-child($((n + 1)))" <<<"$files")
+			url=$(sed -n "s;.*'.*android\/post-download\/\(.*\)'.*;\1;p" <<<"$content" | head -1)
+			url="/$url"
+			break
+		done
+	fi
+	url="https://dw.uptodown.com/dwn/$(req "${uptodown_dlurl}/post-download${url}" - | sed -n 's;.*class="post-download" data-url="\(.*\)".*;\1;p')" || return 1
 	req "$url" "$output"
 }
 get_uptodown_pkg_name() { $HTMLQ --text "tr.full:nth-child(1) > td:nth-child(3)" <<<"$__UPTODOWN_RESP_PKG__"; }
-# --------------------------------------------------
 
 # -------------------- apkmonk ---------------------
 get_apkmonk_resp() {
@@ -677,7 +696,7 @@ build_rv() {
 	p_patcher_args+=("$(join_args "${args[excluded_patches]}" -e) $(join_args "${args[included_patches]}" -i)")
 	[ "${args[exclusive_patches]}" = true ] && p_patcher_args+=("--exclusive")
 
-	for dl_p in archive apkmirror uptodown apkmonk; do
+	for dl_p in archive apkmirror uptodown; do
 		if [ -z "${args[${dl_p}_dlurl]}" ]; then continue; fi
 		if ! get_"${dl_p}"_resp "${args[${dl_p}_dlurl]}" || ! pkg_name=$(get_"${dl_p}"_pkg_name); then
 >>>>>>> 71b9976 (Initial commit)

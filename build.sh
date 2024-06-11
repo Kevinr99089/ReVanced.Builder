@@ -91,6 +91,7 @@ jq --version >/dev/null || abort "\`jq\` is not installed. install it with 'apt 
 java --version >/dev/null || abort "\`openjdk 17\` is not installed. install it with 'apt install openjdk-17-jre' or equivalent"
 zip --version >/dev/null || abort "\`zip\` is not installed. install it with 'apt install zip' or equivalent"
 # ----------------
+rm -rf revanced-magisk/bin/*/tmp.*
 get_prebuilts
 
 set_prebuilts() {
@@ -253,11 +254,12 @@ for table_name in $(toml_get_table_names); do
 
 	if [ "${app_args[arch]}" = both ]; then
 		app_args[table]="$table_name (arm64-v8a)"
-		app_args[module_prop_name]="${app_args[module_prop_name]}-arm64"
 		app_args[arch]="arm64-v8a"
+		app_args[module_prop_name]="${app_args[module_prop_name]}-arm64"
 		idx=$((idx + 1))
 		build_rv "$(declare -p app_args)" &
 		app_args[table]="$table_name (arm-v7a)"
+		app_args[arch]="arm-v7a"
 		app_args[module_prop_name]="${app_args[module_prop_name]}-arm"
 		app_args[arch]="arm-v7a"
 		if ((idx >= PARALLEL_JOBS)); then wait -n; fi
