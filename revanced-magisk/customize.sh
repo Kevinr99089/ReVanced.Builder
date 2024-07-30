@@ -285,8 +285,8 @@ ui_print "* Setting Permissions"
 set_perm "$MODPATH/base.apk" 1000 1000 644 u:object_r:apk_data_file:s0
 
 ui_print "* Mounting $PKG_NAME"
-mkdir -p "$NVBASE/rvhc"
-RVPATH=$NVBASE/rvhc/${MODPATH##*/}.apk
+mkdir -p "/data/adb/rvhc"
+RVPATH=/data/adb/rvhc/${MODPATH##*/}.apk
 mv -f "$MODPATH/base.apk" "$RVPATH"
 
 if ! op=$(mm mount -o bind "$RVPATH" "$BASEPATH/base.apk" 2>&1); then
@@ -306,5 +306,5 @@ done
 >>>>>>> 71b9976 (Initial commit)
 
 ui_print "* Done"
-ui_print "  by Kevinr99089 (github.com/Kevinr99089)"
+ui_print "  by Kevinr99089 (github.com/Kevinr99989)"
 ui_print " "
