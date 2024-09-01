@@ -421,6 +421,33 @@ merge_splits() {
 	return $ret
 }
 
+<<<<<<< HEAD
+merge_splits() {
+	local bundle=$1 output=$2
+	pr "Merging splits"
+	gh_dl "$TEMP_DIR/apkeditor.jar" "https://github.com/REAndroid/APKEditor/releases/download/V1.3.9/APKEditor-1.3.9.jar" >/dev/null || return 1
+	if ! OP=$(java -jar "$TEMP_DIR/apkeditor.jar" merge -i "${bundle}" -o "${bundle}.mzip" -clean-meta -f 2>&1); then
+		epr "$OP"
+		return 1
+	fi
+	# this is required because of apksig
+	mkdir "${bundle}-zip"
+	unzip -qo "${bundle}.mzip" -d "${bundle}-zip"
+	pushd "${bundle}-zip" || abort
+	zip -0rq "${CWD}/${bundle}.zip" .
+	popd || abort
+	# if building module, sign the merged apk properly
+	if isoneof "module" "${build_mode_arr[@]}"; then
+		patch_apk "${bundle}.zip" "${output}" "--exclusive" "${args[cli]}" "${args[ptjar]}"
+		local ret=$?
+	else
+		cp "${bundle}.zip" "${output}"
+		local ret=$?
+	fi
+	rm -r "${bundle}-zip" "${bundle}.zip" "${bundle}.mzip" || :
+	return $ret
+}
+
 # -------------------- apkmirror --------------------
 apk_mirror_search() {
 	local resp="$1" dpi="$2" arch="$3" apk_bundle="$4"
@@ -479,6 +506,23 @@ dl_apkmirror() {
 	if [ "$arch" = all ]; then
 		apparch=(universal noarch 'arm64-v8a + armeabi-v7a')
 	else apparch=("$arch" universal noarch 'arm64-v8a + armeabi-v7a'); fi
+	for ((n = 1; n < 40; n++)); do
+		node=$($HTMLQ "div.table-row.headerFont:nth-last-child($n)" -r "span:nth-child(n+3)" <<<"$resp")
+		if [ -z "$node" ]; then break; fi
+		app_table=$($HTMLQ --text --ignore-whitespace <<<"$node")
+		if [ "$(sed -n 3p <<<"$app_table")" = "$apk_bundle" ] && [ "$(sed -n 6p <<<"$app_table")" = "$dpi" ] &&
+			isoneof "$(sed -n 4p <<<"$app_table")" "${apparch[@]}"; then
+			dlurl=$($HTMLQ --base https://www.apkmirror.com --attribute href "div:nth-child(1) > a:nth-child(1)" <<<"$node")
+			echo "$dlurl"
+			return 0
+		fi
+	done
+	return 1
+}
+dl_apkmirror() {
+	local url=$1 version=${2// /-} output=$3 arch=$4 dpi=$5 is_bundle=false
+	if [ "$arch" = "arm-v7a" ]; then arch="armeabi-v7a"; fi
+	local resp node app_table dlurl=""
 	url="${url}/${url##*/}-${version//./-}-release/"
 	resp=$(req "$url" -) || return 1
 	node=$($HTMLQ "div.table-row.headerFont:nth-last-child(1)" -r "span:nth-child(n+3)" <<<"$resp")
@@ -498,7 +542,6 @@ dl_apkmirror() {
 		resp=$(req "$dlurl" -)
 	fi
 	url=$(echo "$resp" | $HTMLQ --base https://www.apkmirror.com --attribute href "a.btn") || return 1
-	if [ "$apkorbundle" = BUNDLE ] && [[ $url != *"&forcebaseapk=true" ]]; then url="${url}&forcebaseapk=true"; fi
 	url=$(req "$url" - | $HTMLQ --base https://www.apkmirror.com --attribute href "span > a[rel = nofollow]") || return 1
 	req "$url" "$output"
 >>>>>>> 71b9976 (Initial commit)
