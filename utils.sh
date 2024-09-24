@@ -167,12 +167,13 @@ get_rv_prebuilts() {
 		gh_dl "$file" "$url" >&2 || return 1
 		echo -n "$file "
 		if [ "$tag" = "Patches" ]; then
-			local tag_name
-			tag_name=$(jq -r '.tag_name' <<<"$resp")
 			name="patches-${tag_name}.json"
 			file="${dir}/${name}"
-			url=$(jq -e -r '.assets[] | select(.name | endswith("json")) | .url' <<<"$resp") || return 1
-			gh_dl "$file" "$url" >&2 || return 1
+			if [ ! -f "$file" ]; then
+				resp=$(gh_req "$rv_rel" -) || return 1
+				url=$(jq -e -r '.assets[] | select(.name | endswith("json")) | .url' <<<"$resp") || return 1
+				gh_dl "$file" "$url" >&2 || return 1
+			fi
 			echo -n "$file "
 			echo -e "[Changelog](https://github.com/${src}/releases/tag/${tag_name})\n" >>"$dir/changelog.md"
 		fi
@@ -218,7 +219,7 @@ config_update() {
 
 config_update() {
 	declare -A sources
-	: >$TEMP_DIR/skipped
+	: >"$TEMP_DIR"/skipped
 	local conf=""
 	# shellcheck disable=SC2154
 	conf+=$(sed '1d' <<<"$main_config_t")
@@ -739,6 +740,7 @@ build_rv() {
 	p_patcher_args+=("$(join_args "${args[excluded_patches]}" -e) $(join_args "${args[included_patches]}" -i)")
 	[ "${args[exclusive_patches]}" = true ] && p_patcher_args+=("--exclusive")
 
+	local tried_dl=()
 	for dl_p in archive apkmirror uptodown; do
 		if [ -z "${args[${dl_p}_dlurl]}" ]; then continue; fi
 		if ! get_"${dl_p}"_resp "${args[${dl_p}_dlurl]}" || ! pkg_name=$(get_"${dl_p}"_pkg_name); then
