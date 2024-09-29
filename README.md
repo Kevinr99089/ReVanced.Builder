@@ -17,5 +17,7 @@
 - **[j-hc](https://github.com/j-hc), Creator of this Module.**
 
 - **[revanced](https://github.com/ReVanced), Creator of Mods for many applications.**
+
+- **[peternmuller](https://github.com/peternmuller), Help and suggestions for this builder.**
   
 ##### <p align="right"> **ReVanced is owned by ReVanced Team, no rights reserved.**
