@@ -92,6 +92,8 @@ java --version >/dev/null || abort "\`openjdk 17\` is not installed. install it 
 zip --version >/dev/null || abort "\`zip\` is not installed. install it with 'apt install zip' or equivalent"
 # ----------------
 rm -rf revanced-magisk/bin/*/tmp.*
+: >"$TEMP_DIR"/*-rv/changelog.md || :
+
 get_prebuilts
 
 set_prebuilts() {
@@ -274,15 +276,23 @@ done
 wait
 rm -rf temp/tmp.*
 <<<<<<< HEAD
+<<<<<<< HEAD
 if [ -z "$(ls -A1 "${BUILD_DIR}")" ]; then abort "All builds failed."; fi
 =======
 if [ -z "$(ls -A1 ${BUILD_DIR})" ]; then abort "All builds failed."; fi
 >>>>>>> 71b9976 (Initial commit)
+=======
+if [ -z "$(ls -A1 "${BUILD_DIR}")" ]; then abort "All builds failed."; fi
+>>>>>>> 84016aa (build.sh and utils.sh updated)
 
-log "$(cat $TEMP_DIR/*-rv/changelog.md)"
+log "$(cat "$TEMP_DIR"/*-rv/changelog.md)"
 
+<<<<<<< HEAD
 SKIPPED=$(cat $TEMP_DIR/skipped 2>/dev/null || :)
 >>>>>>> 71b9976 (Initial commit)
+=======
+SKIPPED=$(cat "$TEMP_DIR"/skipped 2>/dev/null || :)
+>>>>>>> 84016aa (build.sh and utils.sh updated)
 if [ -n "$SKIPPED" ]; then
 	log "\nSkipped:"
 	log "$SKIPPED"

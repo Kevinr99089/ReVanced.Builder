@@ -73,6 +73,7 @@ get_rv_prebuilts() {
 	local cl_dir=${patches_src%/*}
 	cl_dir=${TEMP_DIR}/${cl_dir,,}-rv
 	[ -d "$cl_dir" ] || mkdir "$cl_dir"
+<<<<<<< HEAD
 	for src_ver in "$cli_src CLI $cli_ver revanced-cli" "$patches_src Patches $patches_ver patches"; do
 		set -- $src_ver
 		local src=$1 tag=$2 ver=${3-} fprefix=$4
@@ -85,6 +86,8 @@ get_rv_prebuilts() {
 	local cli_src=$1 cli_ver=$2 integrations_src=$3 integrations_ver=$4 patches_src=$5 patches_ver=$6
 	pr "Getting prebuilts (${patches_src%/*})" >&2
 	for f in "${TEMP_DIR}"/*-rv; do : >"${f}/changelog.md"; done
+=======
+>>>>>>> 84016aa (build.sh and utils.sh updated)
 	for src_ver in "$cli_src CLI $cli_ver" "$integrations_src Integrations $integrations_ver" "$patches_src Patches $patches_ver"; do
 		set -- $src_ver
 		local src=$1 tag=$2 ver=${3-} ext
@@ -111,7 +114,11 @@ get_rv_prebuilts() {
 		fi
 
 		local url file tag_name name
+<<<<<<< HEAD
 		file=$(find "$dir" -name "${fprefix}-${name_ver#v}.${ext}" -type f 2>/dev/null)
+=======
+		file=$(find "$dir" -name "revanced-${tag,,}-${name_ver#v}.${ext}" -type f 2>/dev/null)
+>>>>>>> 84016aa (build.sh and utils.sh updated)
 		if [ -z "$file" ]; then
 			local resp asset name
 			resp=$(gh_req "$rv_rel" -) || return 1
@@ -122,6 +129,7 @@ get_rv_prebuilts() {
 			name=$(jq -r .name <<<"$asset")
 			file="${dir}/${name}"
 			gh_dl "$file" "$url" >&2 || return 1
+<<<<<<< HEAD
 			echo "$tag: $(cut -d/ -f1 <<<"$src")/${name}  " >>"${cl_dir}/changelog.md"
 		else
 			local for_err=$file
@@ -132,6 +140,18 @@ get_rv_prebuilts() {
 			name=$(basename "$file")
 			tag_name=$(cut -d'-' -f3- <<<"$name")
 			tag_name=v${tag_name%.*}
+=======
+			if [ "$tag" = "Integrations" ]; then integs_file=$file; fi
+			echo "$tag: $(cut -d/ -f1 <<<"$src")/${name}  " >>"${cl_dir}/changelog.md"
+		else
+			if [ "$ver" = "latest" ]; then
+				file=$(grep -v dev <<<"$file" | head -1)
+			else file=$(grep "${ver#v}" <<<"$file" | head -1); fi
+			name=$(basename "$file")
+			tag_name=$(cut -d'-' -f3- <<<"$name")
+			tag_name=v${tag_name%.*}
+			if [ "$tag_name" = "v" ]; then abort "wrong ver"; fi
+>>>>>>> 84016aa (build.sh and utils.sh updated)
 		fi
 		if [ "$tag" = "Patches" ]; then
 			if [ ! -f "$file" ]; then echo -e "[Changelog](https://github.com/${src}/releases/tag/${tag_name})\n" >>"${cl_dir}/changelog.md"; fi
@@ -155,6 +175,7 @@ get_rv_prebuilts() {
 		local rv_rel="https://api.github.com/repos/${src}/releases/"
 		if [ "$ver" ]; then rv_rel+="tags/${ver}"; else rv_rel+="latest"; fi
 
+<<<<<<< HEAD
 		local resp asset url name file
 		resp=$(gh_req "$rv_rel" -) || return 1
 		asset=$(jq -e -r ".assets[] | select(.name | endswith(\"$ext\"))" <<<"$resp") || return 1
@@ -165,21 +186,47 @@ get_rv_prebuilts() {
 
 		echo "$tag: $(cut -d/ -f5 <<<"$url")/${name}  " >>"$dir/changelog.md"
 		gh_dl "$file" "$url" >&2 || return 1
+=======
+>>>>>>> 84016aa (build.sh and utils.sh updated)
 		echo -n "$file "
 		if [ "$tag" = "Patches" ]; then
 			name="patches-${tag_name}.json"
 			file="${dir}/${name}"
 			if [ ! -f "$file" ]; then
 				resp=$(gh_req "$rv_rel" -) || return 1
+				if [ "$ver" = "dev" ]; then resp=$(jq -r '.[0]' <<<"$resp"); fi
 				url=$(jq -e -r '.assets[] | select(.name | endswith("json")) | .url' <<<"$resp") || return 1
 				gh_dl "$file" "$url" >&2 || return 1
+				echo -e "[Changelog](https://github.com/${src}/releases/tag/${tag_name})\n" >>"${cl_dir}/changelog.md"
 			fi
 			echo -n "$file "
+<<<<<<< HEAD
 			echo -e "[Changelog](https://github.com/${src}/releases/tag/${tag_name})\n" >>"$dir/changelog.md"
+=======
+>>>>>>> 84016aa (build.sh and utils.sh updated)
 		fi
 >>>>>>> 71b9976 (Initial commit)
 	done
 	echo
+<<<<<<< HEAD
+=======
+
+	if [ "$integs_file" ]; then
+		if ! (
+			mkdir -p "${integs_file}-zip" || return 1
+			unzip -qo "${integs_file}" -d "${integs_file}-zip" || return 1
+			cd "${integs_file}-zip" || return 1
+			java -cp "${BIN_DIR}/paccer.jar:${BIN_DIR}/dexlib2.jar" com.jhc.Main "${integs_file}-zip/classes.dex" "${integs_file}-zip/classes-patched.dex" || return 1
+			mv -f "${integs_file}-zip/classes-patched.dex" "${integs_file}-zip/classes.dex" || return 1
+			rm "${integs_file}" || return 1
+			zip -0rq "${integs_file}" . || return 1
+		) >&2; then
+			echo >&2 "Patching revanced-integrations failed"
+		fi
+		rm -r "${integs_file}-zip" || :
+
+	fi
+>>>>>>> 84016aa (build.sh and utils.sh updated)
 }
 
 <<<<<<< HEAD
@@ -233,6 +280,7 @@ config_update() {
 		if [ "$enabled" = false ]; then continue; fi
 		PATCHES_SRC=$(toml_get "$t" patches-source) || PATCHES_SRC=$DEF_PATCHES_SRC
 <<<<<<< HEAD
+<<<<<<< HEAD
 		PATCHES_VER=$(toml_get "$t" patches-version) || PATCHES_VER=$DEF_PATCHES_VER
 		if [[ -v sources["$PATCHES_SRC/$PATCHES_VER"] ]]; then
 			if [ "${sources["$PATCHES_SRC/$PATCHES_VER"]}" = 1 ]; then upped+=("$table_name"); fi
@@ -259,10 +307,16 @@ config_update() {
 =======
 		if [[ -v sources[$PATCHES_SRC] ]]; then
 			if [ "${sources[$PATCHES_SRC]}" = 1 ]; then
+=======
+		PATCHES_VER=$(toml_get "$t" patches-version) || PATCHES_VER=$DEF_PATCHES_VER
+		if [[ -v sources["$PATCHES_SRC/$PATCHES_VER"] ]]; then
+			if [ "${sources["$PATCHES_SRC/$PATCHES_VER"]}" = 1 ]; then
+>>>>>>> 84016aa (build.sh and utils.sh updated)
 				conf+="$t"
 				conf+=$'\n'
 			fi
 		else
+<<<<<<< HEAD
 			sources[$PATCHES_SRC]=0
 			if ! last_patches_url=$(gh_req "https://api.github.com/repos/${PATCHES_SRC}/releases/latest" - \
 				| jq -e -r '.assets[] | select(.name | endswith("jar")) | .name'); then
@@ -273,12 +327,34 @@ config_update() {
 			if [ "$cur_patches" ] && [ "$last_patches" ]; then
 				if [ "${cur_patches}" != "$last_patches" ]; then
 					sources[$PATCHES_SRC]=1
+=======
+			sources["$PATCHES_SRC/$PATCHES_VER"]=0
+			local rv_rel="https://api.github.com/repos/${PATCHES_SRC}/releases"
+			if [ "$PATCHES_VER" = "dev" ]; then
+				last_patches=$(gh_req "$rv_rel" - | jq -e -r '.[0]')
+			elif [ "$PATCHES_VER" = "latest" ]; then
+				last_patches=$(gh_req "$rv_rel/latest" -)
+			else
+				last_patches=$(gh_req "$rv_rel/tags/${ver}" -)
+			fi
+
+			if ! last_patches=$(jq -e -r '.assets[] | select(.name | endswith("jar")) | .name' <<<"$last_patches"); then
+				abort oops
+			fi
+			if [ "$last_patches" ]; then
+				if ! OP=$(grep "^Patches: ${PATCHES_SRC%%/*}/" build.md | grep "$last_patches"); then
+					sources["$PATCHES_SRC/$PATCHES_VER"]=1
+>>>>>>> 84016aa (build.sh and utils.sh updated)
 					prcfg=true
 					conf+="$t"
 					conf+=$'\n'
 				else
+<<<<<<< HEAD
 					echo "Patches: ${PATCHES_SRC%%/*}/${cur_patches}  " >>$TEMP_DIR/skipped
 >>>>>>> 71b9976 (Initial commit)
+=======
+					echo "$OP" >>"$TEMP_DIR"/skipped
+>>>>>>> 84016aa (build.sh and utils.sh updated)
 				fi
 			fi
 		fi
