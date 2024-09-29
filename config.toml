@@ -2,7 +2,7 @@
 
 [YT] # Default patchs are applied, Exception for lines 4 & 5:
 included-patches = "'Custom branding' 'Change header'"
-excluded-patches = "'Hide cast button' 'Hide watermark' 'Swipe controls'"
+excluded-patches = "'Hide cast button' 'Swipe controls'"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube/"
 
 [Music] # Default patches are applied:
