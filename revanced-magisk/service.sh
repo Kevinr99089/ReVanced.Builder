@@ -71,4 +71,28 @@ if [ $svcl != 0 ]; then
 	err "app not installed"
 	exit
 fi
+<<<<<<< HEAD
 >>>>>>> 71b9976 (Initial commit)
+=======
+BASEPATH=${BASEPATH##*:} BASEPATH=${BASEPATH%/*}
+if [ ! -d "$BASEPATH/lib" ]; then
+	err "system force-rebooted (fix your ROM)"
+	exit
+fi
+VERSION=$(dumpsys package "$PKG_NAME" | grep -m1 versionName) VERSION="${VERSION#*=}"
+if [ "$VERSION" != "$PKG_VER" ] && [ "$VERSION" ]; then
+	err "version mismatch (installed:${VERSION}, module:$PKG_VER)"
+	exit
+fi
+grep "$PKG_NAME" /proc/mounts | while read -r line; do
+	mp=${line#* } mp=${mp%% *}
+	umount -l "${mp%%\\*}"
+done
+if ! chcon u:object_r:apk_data_file:s0 "$RVPATH"; then
+	err "apk not found"
+	exit
+fi
+mount -o bind "$RVPATH" "$BASEPATH/base.apk"
+am force-stop "$PKG_NAME"
+[ -f "$MODDIR/err" ] && mv -f "$MODDIR/err" "$MODDIR/module.prop"
+>>>>>>> fb4e301 (customize.sh and service.sh updated)
