@@ -144,14 +144,19 @@ get_rv_prebuilts() {
 			if [ "$tag" = "Integrations" ]; then integs_file=$file; fi
 			echo "$tag: $(cut -d/ -f1 <<<"$src")/${name}  " >>"${cl_dir}/changelog.md"
 		else
+			local for_err=$file
 			if [ "$ver" = "latest" ]; then
-				file=$(grep -v dev <<<"$file" | head -1)
-			else file=$(grep "${ver#v}" <<<"$file" | head -1); fi
+				file=$(grep -v '/[^/]*dev[^/]*$' <<<"$file" | head -1)
+			else file=$(grep "/[^/]*${ver#v}[^/]*\$" <<<"$file" | head -1); fi
+			if [ -z "$file" ]; then abort "filter fail: '$for_err' with '$ver'"; fi
 			name=$(basename "$file")
 			tag_name=$(cut -d'-' -f3- <<<"$name")
 			tag_name=v${tag_name%.*}
+<<<<<<< HEAD
 			if [ "$tag_name" = "v" ]; then abort "wrong ver"; fi
 >>>>>>> 84016aa (build.sh and utils.sh updated)
+=======
+>>>>>>> 536d54c (build.sh and utils.sh updated)
 		fi
 		if [ "$tag" = "Patches" ]; then
 			if [ ! -f "$file" ]; then echo -e "[Changelog](https://github.com/${src}/releases/tag/${tag_name})\n" >>"${cl_dir}/changelog.md"; fi
@@ -971,12 +976,15 @@ build_rv() {
 			fi
 		fi
 		if [ "${NORB:-}" != true ] || [ ! -f "$patched_apk" ]; then
+<<<<<<< HEAD
 =======
 
 			fi
 		fi
 		if [ ! -f "$patched_apk" ] || [ "$REBUILD" = true ]; then
 >>>>>>> 71b9976 (Initial commit)
+=======
+>>>>>>> 536d54c (build.sh and utils.sh updated)
 			if ! patch_apk "$stock_apk" "$patched_apk" "${patcher_args[*]}" "${args[cli]}" "${args[ptjar]}"; then
 				epr "Building '${table}' failed!"
 				return 0
