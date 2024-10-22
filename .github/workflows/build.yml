@@ -25,6 +25,7 @@ jobs:
           fetch-depth: 0
           submodules: true
 
+<<<<<<< HEAD
       - name: Update config
         if: ${{ inputs.from_ci }}
         run: |
@@ -39,6 +40,8 @@ jobs:
             fi
           fi
 
+=======
+>>>>>>> f70e522 (Build.yml updated)
       - name: Get next version code
         id: next_ver_code
         env:
@@ -83,12 +86,17 @@ jobs:
           cp -f build.tmp build.md
           get_update_json() {
             echo "{
+<<<<<<< HEAD
             \"version\": \"$1\",
 <<<<<<< HEAD
             \"versionCode\": ${{ steps.next_ver_code.outputs.NEXT_VER_CODE }},
 =======
             \"versionCode\": ${{ steps.next_ver_code.outputs.NEXT_VER_CODE}},
 >>>>>>> 71b9976 (Initial commit)
+=======
+            \"version\": \"$1 (${{ steps.next_ver_code.outputs.NEXT_VER_CODE }})\",
+            \"versionCode\": ${{ steps.next_ver_code.outputs.NEXT_VER_CODE }},
+>>>>>>> f70e522 (Build.yml updated)
             \"zipUrl\": \"$2\",
             \"changelog\": \"https://raw.githubusercontent.com/$GITHUB_REPOSITORY/update/build.md\"
           }"
