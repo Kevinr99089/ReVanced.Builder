@@ -216,7 +216,7 @@ get_rv_prebuilts() {
 <<<<<<< HEAD
 =======
 
-	if [ "$integs_file" ]; then
+	if [ "$integs_file" ] && [ "$REMOVE_RV_INTEGRATIONS_CHECKS" = true ]; then
 		if ! (
 			mkdir -p "${integs_file}-zip" || return 1
 			unzip -qo "${integs_file}" -d "${integs_file}-zip" || return 1
@@ -229,7 +229,6 @@ get_rv_prebuilts() {
 			echo >&2 "Patching revanced-integrations failed"
 		fi
 		rm -r "${integs_file}-zip" || :
-
 	fi
 >>>>>>> 84016aa (build.sh and utils.sh updated)
 }
@@ -794,10 +793,14 @@ check_sig() {
 build_rv() {
 	eval "declare -A args=${1#*=}"
 <<<<<<< HEAD
+<<<<<<< HEAD
 	local version="" pkg_name=""
 =======
 	local version build_mode_arr pkg_name
 >>>>>>> 71b9976 (Initial commit)
+=======
+	local version="" pkg_name=""
+>>>>>>> 9eb962c (Multiple files updated (Build/utils.sh))
 	local mode_arg=${args[build_mode]} version_mode=${args[version]}
 	local app_name=${args[app_name]}
 	local app_name_l=${app_name,,}
@@ -1058,10 +1061,14 @@ module_prop() {
 	echo "id=${1}
 name=${2}
 <<<<<<< HEAD
+<<<<<<< HEAD
 version=v${3} (${NEXT_VER_CODE})
 =======
 version=v${3}
 >>>>>>> 71b9976 (Initial commit)
+=======
+version=v${3} (${NEXT_VER_CODE})
+>>>>>>> 9eb962c (Multiple files updated (Build/utils.sh))
 versionCode=${NEXT_VER_CODE}
 author=j-hc
 description=${4}" >"${6}/module.prop"
