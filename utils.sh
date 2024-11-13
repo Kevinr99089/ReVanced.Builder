@@ -3,8 +3,11 @@
 MODULE_TEMPLATE_DIR="revanced-magisk"
 <<<<<<< HEAD
 CWD=$(pwd)
+<<<<<<< HEAD
 =======
 >>>>>>> 71b9976 (Initial commit)
+=======
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 TEMP_DIR="temp"
 BIN_DIR="bin"
 BUILD_DIR="build"
@@ -68,11 +71,15 @@ abort() {
 
 get_rv_prebuilts() {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 	local cli_src=$1 cli_ver=$2 patches_src=$3 patches_ver=$4
 	pr "Getting prebuilts (${patches_src%/*})" >&2
 	local cl_dir=${patches_src%/*}
 	cl_dir=${TEMP_DIR}/${cl_dir,,}-rv
 	[ -d "$cl_dir" ] || mkdir "$cl_dir"
+<<<<<<< HEAD
 <<<<<<< HEAD
 	for src_ver in "$cli_src CLI $cli_ver revanced-cli" "$patches_src Patches $patches_ver patches"; do
 		set -- $src_ver
@@ -89,13 +96,22 @@ get_rv_prebuilts() {
 =======
 >>>>>>> 84016aa (build.sh and utils.sh updated)
 	for src_ver in "$cli_src CLI $cli_ver" "$integrations_src Integrations $integrations_ver" "$patches_src Patches $patches_ver"; do
+=======
+	for src_ver in "$cli_src CLI $cli_ver revanced-cli" "$patches_src Patches $patches_ver patches"; do
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 		set -- $src_ver
-		local src=$1 tag=$2 ver=${3-} ext
-		if [ "$tag" = "CLI" ] || [ "$tag" = "Patches" ]; then
+		local src=$1 tag=$2 ver=${3-} fprefix=$4
+		local ext
+		if [ "$tag" = "CLI" ]; then
 			ext="jar"
+<<<<<<< HEAD
 		elif [ "$tag" = "Integrations" ]; then
 			ext="apk"
 >>>>>>> 71b9976 (Initial commit)
+=======
+		elif [ "$tag" = "Patches" ]; then
+			ext="rvp"
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 		else abort unreachable; fi
 		local dir=${src%/*}
 		dir=${TEMP_DIR}/${dir,,}-rv
@@ -115,10 +131,14 @@ get_rv_prebuilts() {
 
 		local url file tag_name name
 <<<<<<< HEAD
+<<<<<<< HEAD
 		file=$(find "$dir" -name "${fprefix}-${name_ver#v}.${ext}" -type f 2>/dev/null)
 =======
 		file=$(find "$dir" -name "revanced-${tag,,}-${name_ver#v}.${ext}" -type f 2>/dev/null)
 >>>>>>> 84016aa (build.sh and utils.sh updated)
+=======
+		file=$(find "$dir" -name "${fprefix}-${name_ver#v}.${ext}" -type f 2>/dev/null)
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 		if [ -z "$file" ]; then
 			local resp asset name
 			resp=$(gh_req "$rv_rel" -) || return 1
@@ -129,6 +149,7 @@ get_rv_prebuilts() {
 			name=$(jq -r .name <<<"$asset")
 			file="${dir}/${name}"
 			gh_dl "$file" "$url" >&2 || return 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 			echo "$tag: $(cut -d/ -f1 <<<"$src")/${name}  " >>"${cl_dir}/changelog.md"
 		else
@@ -142,6 +163,8 @@ get_rv_prebuilts() {
 			tag_name=v${tag_name%.*}
 =======
 			if [ "$tag" = "Integrations" ]; then integs_file=$file; fi
+=======
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 			echo "$tag: $(cut -d/ -f1 <<<"$src")/${name}  " >>"${cl_dir}/changelog.md"
 		else
 			local for_err=$file
@@ -158,6 +181,7 @@ get_rv_prebuilts() {
 =======
 >>>>>>> 536d54c (build.sh and utils.sh updated)
 		fi
+<<<<<<< HEAD
 		if [ "$tag" = "Patches" ]; then
 			if [ ! -f "$file" ]; then echo -e "[Changelog](https://github.com/${src}/releases/tag/${tag_name})\n" >>"${cl_dir}/changelog.md"; fi
 			if [ "$REMOVE_RV_INTEGRATIONS_CHECKS" = true ]; then
@@ -194,16 +218,25 @@ get_rv_prebuilts() {
 =======
 >>>>>>> 84016aa (build.sh and utils.sh updated)
 		echo -n "$file "
+=======
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 		if [ "$tag" = "Patches" ]; then
-			name="patches-${tag_name}.json"
-			file="${dir}/${name}"
-			if [ ! -f "$file" ]; then
-				resp=$(gh_req "$rv_rel" -) || return 1
-				if [ "$ver" = "dev" ]; then resp=$(jq -r '.[0]' <<<"$resp"); fi
-				url=$(jq -e -r '.assets[] | select(.name | endswith("json")) | .url' <<<"$resp") || return 1
-				gh_dl "$file" "$url" >&2 || return 1
-				echo -e "[Changelog](https://github.com/${src}/releases/tag/${tag_name})\n" >>"${cl_dir}/changelog.md"
+			if [ ! -f "$file" ]; then echo -e "[Changelog](https://github.com/${src}/releases/tag/${tag_name})\n" >>"${cl_dir}/changelog.md"; fi
+			if [ "$REMOVE_RV_INTEGRATIONS_CHECKS" = true ]; then
+				if ! (
+					mkdir -p "${file}-zip" || return 1
+					unzip -qo "${file}" -d "${file}-zip" || return 1
+					java -cp "${BIN_DIR}/paccer.jar:${BIN_DIR}/dexlib2.jar" com.jhc.Main "${file}-zip/extensions/shared.rve" "${file}-zip/extensions/shared-patched.rve" || return 1
+					mv -f "${file}-zip/extensions/shared-patched.rve" "${file}-zip/extensions/shared.rve" || return 1
+					rm "${file}" || return 1
+					cd "${file}-zip" || abort
+					zip -0rq "${CWD}/${file}" . || return 1
+				) >&2; then
+					echo >&2 "Patching revanced-integrations failed"
+				fi
+				rm -r "${file}-zip" || :
 			fi
+<<<<<<< HEAD
 			echo -n "$file "
 <<<<<<< HEAD
 			echo -e "[Changelog](https://github.com/${src}/releases/tag/${tag_name})\n" >>"$dir/changelog.md"
@@ -231,6 +264,12 @@ get_rv_prebuilts() {
 		rm -r "${integs_file}-zip" || :
 	fi
 >>>>>>> 84016aa (build.sh and utils.sh updated)
+=======
+		fi
+		echo -n "$file "
+	done
+	echo
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 }
 
 <<<<<<< HEAD
@@ -341,8 +380,7 @@ config_update() {
 			else
 				last_patches=$(gh_req "$rv_rel/tags/${ver}" -)
 			fi
-
-			if ! last_patches=$(jq -e -r '.assets[] | select(.name | endswith("jar")) | .name' <<<"$last_patches"); then
+			if ! last_patches=$(jq -e -r '.assets[] | select(.name | endswith("rvp")) | .name' <<<"$last_patches"); then
 				abort oops
 			fi
 			if [ "$last_patches" ]; then
@@ -408,10 +446,14 @@ gh_dl() {
 
 log() { echo -e "$1  " >>"build.md"; }
 <<<<<<< HEAD
+<<<<<<< HEAD
 get_highest_ver() {
 =======
 get_largest_ver() {
 >>>>>>> 71b9976 (Initial commit)
+=======
+get_highest_ver() {
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 	local vers m
 	vers=$(tee)
 	m=$(head -1 <<<"$vers")
@@ -424,6 +466,9 @@ semver_validate() {
 }
 get_patch_last_supported_ver() {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 	local pkg_name=$1 inc_sel=$2 _exc_sel=$3 _exclusive=$4 # TODO: resolve using all of these
 	local op
 	if [ "$inc_sel" ]; then
@@ -442,6 +487,7 @@ get_patch_last_supported_ver() {
 			get_highest_ver <<<"$vers"
 			return
 		fi
+<<<<<<< HEAD
 	fi
 	if ! op=$(java -jar "$rv_cli_jar" list-versions "$rv_patches_jar" -f "$pkg_name" 2>&1 | tail -n +3 | awk '{$1=$1}1'); then
 		epr "list-versions: '$op'"
@@ -466,6 +512,17 @@ get_patch_last_supported_ver() {
 	fi
 	tr -d ' ,\t[]"' <<<"$vs" | sort -u | grep -v '^$' | get_largest_ver || :
 >>>>>>> 71b9976 (Initial commit)
+=======
+	fi
+	if ! op=$(java -jar "$rv_cli_jar" list-versions "$rv_patches_jar" -f "$pkg_name" 2>&1 | tail -n +3 | awk '{$1=$1}1'); then
+		epr "list-versions: '$op'"
+		return 1
+	fi
+	if [ "$op" = "Any" ]; then return; fi
+	pcount=$(head -1 <<<"$op") pcount=${pcount#*(} pcount=${pcount% *}
+	if [ -z "$pcount" ]; then abort "unreachable: '$pcount'"; fi
+	grep -F "($pcount patch" <<<"$op" | sed 's/ (.* patch.*//' | get_highest_ver || return 1
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 }
 
 isoneof() {
@@ -491,6 +548,7 @@ merge_splits() {
 	zip -0rq "${CWD}/${bundle}.zip" .
 	popd || abort
 	# if building module, sign the merged apk properly
+<<<<<<< HEAD
 	if isoneof "module" "${build_mode_arr[@]}"; then
 		patch_apk "${bundle}.zip" "${output}" "--exclusive" "${args[cli]}" "${args[ptjar]}"
 		local ret=$?
@@ -518,6 +576,8 @@ merge_splits() {
 	zip -0rq "${CWD}/${bundle}.zip" .
 	popd || abort
 	# if building module, sign the merged apk properly
+=======
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 	if isoneof "module" "${build_mode_arr[@]}"; then
 		patch_apk "${bundle}.zip" "${output}" "--exclusive" "${args[cli]}" "${args[ptjar]}"
 		local ret=$?
@@ -631,10 +691,14 @@ get_apkmirror_vers() {
 	local vers apkm_resp
 	apkm_resp=$(req "https://www.apkmirror.com/uploads/?appcategory=${__APKMIRROR_CAT__}" -)
 <<<<<<< HEAD
+<<<<<<< HEAD
 	vers=$(sed -n 's;.*Version:</span><span class="infoSlide-value">\(.*\) </span>.*;\1;p' <<<"$apkm_resp" | awk '{$1=$1}1')
 =======
 	vers=$(sed -n 's;.*Version:</span><span class="infoSlide-value">\(.*\) </span>.*;\1;p' <<<"$apkm_resp")
 >>>>>>> 71b9976 (Initial commit)
+=======
+	vers=$(sed -n 's;.*Version:</span><span class="infoSlide-value">\(.*\) </span>.*;\1;p' <<<"$apkm_resp" | awk '{$1=$1}1')
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 	if [ "$__AAV__" = false ]; then
 		local IFS=$'\n'
 		vers=$(grep -iv "\(beta\|alpha\)" <<<"$vers")
@@ -763,6 +827,10 @@ get_archive_pkg_name() { echo "$__ARCHIVE_PKG_NAME__"; }
 patch_apk() {
 	local stock_input=$1 patched_apk=$2 patcher_args=$3 rv_cli_jar=$4 rv_patches_jar=$5
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	# TODO: --options
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 	local cmd="java -jar $rv_cli_jar patch $stock_input --purge -o $patched_apk -p $rv_patches_jar --keystore=ks.keystore \
 --keystore-entry-password=123456789 --keystore-password=123456789 --signer=jhc --keystore-entry-alias=jhc $patcher_args"
 	if [ "$OS" = Android ]; then cmd+=" --custom-aapt2-binary=${AAPT2}"; fi
@@ -812,8 +880,12 @@ build_rv() {
 
 	local p_patcher_args=()
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if [ "${args[excluded_patches]}" ]; then p_patcher_args+=("$(join_args "${args[excluded_patches]}" -d)"); fi
 	if [ "${args[included_patches]}" ]; then p_patcher_args+=("$(join_args "${args[included_patches]}" -e)"); fi
+=======
+	p_patcher_args+=("$(join_args "${args[excluded_patches]}" -d) $(join_args "${args[included_patches]}" -e)")
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 	[ "${args[exclusive_patches]}" = true ] && p_patcher_args+=("--exclusive")
 
 	local tried_dl=()
@@ -848,10 +920,14 @@ build_rv() {
 	if [ "$version_mode" = auto ]; then
 		if ! version=$(get_patch_last_supported_ver "$pkg_name" \
 <<<<<<< HEAD
+<<<<<<< HEAD
 			"${args[included_patches]}" "${args[excluded_patches]}" "${args[exclusive_patches]}"); then
 =======
 			"${args[included_patches]}" "${args[excluded_patches]}" "${args[exclusive_patches]}" "${args[ptjs]}"); then
 >>>>>>> 71b9976 (Initial commit)
+=======
+			"${args[included_patches]}" "${args[excluded_patches]}" "${args[exclusive_patches]}"); then
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 			exit 1
 		elif [ -z "$version" ]; then get_latest_ver=true; fi
 	elif isoneof "$version_mode" latest beta; then
@@ -865,10 +941,14 @@ build_rv() {
 		if [ "$version_mode" = beta ]; then __AAV__="true"; else __AAV__="false"; fi
 		pkgvers=$(get_"${dl_from}"_vers)
 <<<<<<< HEAD
+<<<<<<< HEAD
 		version=$(get_highest_ver <<<"$pkgvers") || version=$(head -1 <<<"$pkgvers")
 =======
 		version=$(get_largest_ver <<<"$pkgvers") || version=$(head -1 <<<"$pkgvers")
 >>>>>>> 71b9976 (Initial commit)
+=======
+		version=$(get_highest_ver <<<"$pkgvers") || version=$(head -1 <<<"$pkgvers")
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 	fi
 	if [ -z "$version" ]; then
 		epr "empty version, not building ${table}."
@@ -916,6 +996,7 @@ build_rv() {
 	log "${table}: ${version}"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	local microg_patch
 	microg_patch=$(java -jar "$rv_cli_jar" list-patches "$rv_patches_jar" -f "$pkg_name" -v -p 2>&1 |
 		grep "^Name: " | grep -i "gmscore\|microg" || :) microg_patch=${microg_patch#*: }
@@ -924,6 +1005,11 @@ build_rv() {
 	local microg_patch
 	microg_patch=$(jq -r ".[] | select(.compatiblePackages // [] | .[] | .name==\"${pkg_name}\") | .name" "${args[ptjs]}" | grep -i "gmscore\|microg" || :)
 >>>>>>> 71b9976 (Initial commit)
+=======
+	local microg_patch
+	microg_patch=$(java -jar "$rv_cli_jar" list-patches "$rv_patches_jar" -f "$pkg_name" -v -p 2>&1 |
+		grep "^Name: " | grep -i "gmscore\|microg" || :) microg_patch=${microg_patch#*: }
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 	if [ -n "$microg_patch" ] && [[ ${p_patcher_args[*]} =~ $microg_patch ]]; then
 		epr "You cant include/exclude microg patches as that's done by rvmm builder automatically."
 		p_patcher_args=("${p_patcher_args[@]//-[ei] ${microg_patch}/}")
@@ -953,6 +1039,7 @@ build_rv() {
 			patched_apk="${TEMP_DIR}/${app_name_l}-${rv_brand_f}-${version_f}-${arch_f}-${build_mode}.apk"
 			if [ "$build_mode" = apk ]; then
 <<<<<<< HEAD
+<<<<<<< HEAD
 				patcher_args+=("-e \"${microg_patch}\"")
 			elif [ "$build_mode" = module ]; then
 				patcher_args+=("-d \"${microg_patch}\"")
@@ -961,6 +1048,11 @@ build_rv() {
 			elif [ "$build_mode" = module ]; then
 				patcher_args+=("-e \"${microg_patch}\"")
 >>>>>>> 71b9976 (Initial commit)
+=======
+				patcher_args+=("-e \"${microg_patch}\"")
+			elif [ "$build_mode" = module ]; then
+				patcher_args+=("-d \"${microg_patch}\"")
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 			fi
 		else
 			patched_apk="${TEMP_DIR}/${app_name_l}-${rv_brand_f}-${version_f}-${arch_f}.apk"

@@ -44,6 +44,7 @@ REMOVE_RV_INTEGRATIONS_CHECKS=$(toml_get "$main_config_t" remove-rv-integrations
 DEF_PATCHES_VER=$(toml_get "$main_config_t" patches-version) || DEF_PATCHES_VER="latest"
 DEF_CLI_VER=$(toml_get "$main_config_t" cli-version) || DEF_CLI_VER="latest"
 DEF_PATCHES_SRC=$(toml_get "$main_config_t" patches-source) || DEF_PATCHES_SRC="ReVanced/revanced-patches"
+<<<<<<< HEAD
 DEF_CLI_SRC=$(toml_get "$main_config_t" cli-source) || DEF_CLI_SRC="j-hc/revanced-cli"
 DEF_RV_BRAND=$(toml_get "$main_config_t" rv-brand) || DEF_RV_BRAND="ReVanced"
 mkdir -p "$TEMP_DIR" "$BUILD_DIR"
@@ -53,6 +54,8 @@ DEF_INTEGRATIONS_VER=$(toml_get "$main_config_t" integrations-version) || DEF_IN
 DEF_CLI_VER=$(toml_get "$main_config_t" cli-version) || DEF_CLI_VER=""
 DEF_PATCHES_SRC=$(toml_get "$main_config_t" patches-source) || DEF_PATCHES_SRC="ReVanced/revanced-patches"
 DEF_INTEGRATIONS_SRC=$(toml_get "$main_config_t" integrations-source) || DEF_INTEGRATIONS_SRC="ReVanced/revanced-integrations"
+=======
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 DEF_CLI_SRC=$(toml_get "$main_config_t" cli-source) || DEF_CLI_SRC="j-hc/revanced-cli"
 DEF_RV_BRAND=$(toml_get "$main_config_t" rv-brand) || DEF_RV_BRAND="ReVanced"
 <<<<<<< HEAD
@@ -145,6 +148,7 @@ for table_name in $(toml_get_table_names); do
 	patches_src=$(toml_get "$t" patches-source) || patches_src=$DEF_PATCHES_SRC
 	patches_ver=$(toml_get "$t" patches-version) || patches_ver=$DEF_PATCHES_VER
 <<<<<<< HEAD
+<<<<<<< HEAD
 	cli_src=$(toml_get "$t" cli-source) || cli_src=$DEF_CLI_SRC
 	cli_ver=$(toml_get "$t" cli-version) || cli_ver=$DEF_CLI_VER
 
@@ -171,6 +175,17 @@ for table_name in $(toml_get_table_names); do
 		app_args[ptjs]=$rv_patches_json
 	fi
 >>>>>>> 71b9976 (Initial commit)
+=======
+	cli_src=$(toml_get "$t" cli-source) || cli_src=$DEF_CLI_SRC
+	cli_ver=$(toml_get "$t" cli-version) || cli_ver=$DEF_CLI_VER
+
+	if ! RVP="$(get_rv_prebuilts "$cli_src" "$cli_ver" "$patches_src" "$patches_ver")"; then
+		abort "could not download rv prebuilts"
+	fi
+	read -r rv_cli_jar rv_patches_jar <<<"$RVP"
+	app_args[cli]=$rv_cli_jar
+	app_args[ptjar]=$rv_patches_jar
+>>>>>>> 4ce26bd (Update utils.sh and build.sh)
 	if [[ -v cliriplib[${app_args[cli]}] ]]; then app_args[riplib]=${cliriplib[${app_args[cli]}]}; else
 		if [[ $(java -jar "${app_args[cli]}" patch 2>&1) == *rip-lib* ]]; then
 			cliriplib[${app_args[cli]}]=true
