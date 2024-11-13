@@ -56,6 +56,7 @@ if ! pmex path "$PKG_NAME" >&2; then
 		if [ "${BASEPATH:1:4}" = data ]; then
 			if pmex uninstall -k --user 0 "$PKG_NAME" >&2; then
 				rm -rf "$BASEPATH" 2>&1
+<<<<<<< HEAD
 				ui_print "* Cleared existing $PKG_NAME package"
 				ui_print "* Reboot and reflash"
 				abort
@@ -125,7 +126,11 @@ if ! pmex path "$PKG_NAME" >&2; then
 		BASEPATH=${BASEPATH##*:} BASEPATH=${BASEPATH%/*}
 		if [ "${BASEPATH:1:4}" = data ]; then
 			if pmex uninstall -k --user 0 "$PKG_NAME" >&2; then
+=======
+>>>>>>> bbfbe06 (customize.sh)
 				ui_print "* Cleared existing $PKG_NAME package"
+				ui_print "* Reboot and reflash"
+				abort
 			else abort "ERROR: pm uninstall failed"; fi
 		else ui_print "* Installed stock $PKG_NAME package"; fi
 	fi
@@ -318,17 +323,17 @@ fi
 	settings put global verifier_verify_adb_installs "$VERIF_ADB"
 }
 if [ $INS = true ] && ! install; then abort; fi
-
-BASEPATHLIB=${BASEPATH}/lib/${ARCH}
-if [ -z "$(ls -A1 "$BASEPATHLIB")" ]; then
+if [ $INS = true ] || [ -z "$(ls -A1 "$BASEPATHLIB")" ]; then
 	ui_print "* Extracting native libs"
-	mkdir -p "$BASEPATHLIB"
-	if ! op=$(unzip -j "$MODPATH"/"$PKG_NAME".apk lib/"${ARCH_LIB}"/* -d "$BASEPATHLIB" 2>&1); then
+	BASEPATHLIB=${BASEPATH}/lib/${ARCH}
+	if [ ! -d "$BASEPATHLIB" ]; then mkdir -p "$BASEPATHLIB"; else rm -f "$BASEPATHLIB"/* >/dev/null 2>&1 || :; fi
+	if ! op=$(unzip -o -j "$MODPATH/$PKG_NAME.apk" "lib/${ARCH_LIB}/*" -d "$BASEPATHLIB" 2>&1); then
 		ui_print "ERROR: extracting native libs failed"
 		abort "$op"
 	fi
 	set_perm_recursive "${BASEPATH}/lib" 1000 1000 755 755 u:object_r:apk_data_file:s0
 fi
+<<<<<<< HEAD
 <<<<<<< HEAD
 mv -f "$MODPATH/base.apk" "$RVPATH"
 
@@ -347,6 +352,9 @@ if [ "$IS_SYS" = false ]; then
 	ui_print "* Optimizing $PKG_NAME"
 	nohup cmd package compile --reset "$PKG_NAME" >/dev/null 2>&1 &
 =======
+=======
+
+>>>>>>> bbfbe06 (customize.sh)
 ui_print "* Setting Permissions"
 set_perm "$MODPATH/base.apk" 1000 1000 644 u:object_r:apk_data_file:s0
 
