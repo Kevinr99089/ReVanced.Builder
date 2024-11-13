@@ -52,15 +52,15 @@ Remember to re-enable it if you had to disable it to install applications.
 
 </details>
 
----
+Install all apps
+<details>
+      <summary>
+If you've never installed an application from the internet</summary>
 
 First install on MicroG_RE_X.X.apk in the notification bar and yt-revanced-vxx.xx.xx-all.apk:
 
 <img src=".github/Installation/09.png">
 
-<details>
-      <summary>
-If you've never installed an application from the internet</summary>
 Click on the application you've just downloaded in the notification bar, if you have never installed applications from the Web, you need to enable 'Unknown Sources' in settings:
 
 <img src=".github/Installation/10.png">
@@ -78,6 +78,7 @@ Once microG Services is installed, click on OK and click on YT-ReVanced (in the 
 <img src=".github/Installation/13.png">
 </details>
 
+---
 
 Once done, Go to Home screen (or Settings > Apps), and go to MicroG settings :
 
@@ -113,7 +114,6 @@ If you'd like to use Obtainium to easily manage apps and updates, you can downlo
 
 [<img src=".github/Installation/32.png" width="200">](https://github.com/ImranR98/Obtainium/releases/latest/download/app-release.apk)
 
----
 <details>
       <summary>
 If you've never installed an application from the internet</summary>
@@ -129,8 +129,6 @@ and allow permission:
 
 <img src=".github/Installation/21.png">
 </details>
-
----
 
 <details>
       <summary>
