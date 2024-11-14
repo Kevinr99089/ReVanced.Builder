@@ -881,11 +881,16 @@ build_rv() {
 	local p_patcher_args=()
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	if [ "${args[excluded_patches]}" ]; then p_patcher_args+=("$(join_args "${args[excluded_patches]}" -d)"); fi
 	if [ "${args[included_patches]}" ]; then p_patcher_args+=("$(join_args "${args[included_patches]}" -e)"); fi
 =======
 	p_patcher_args+=("$(join_args "${args[excluded_patches]}" -d) $(join_args "${args[included_patches]}" -e)")
 >>>>>>> 4ce26bd (Update utils.sh and build.sh)
+=======
+	if [ "${args[excluded_patches]}" ]; then p_patcher_args+=("$(join_args "${args[excluded_patches]}" -d)"); fi
+	if [ "${args[included_patches]}" ]; then p_patcher_args+=("$(join_args "${args[included_patches]}" -e)"); fi
+>>>>>>> 9d2190d (Update utils.sh and build.sh)
 	[ "${args[exclusive_patches]}" = true ] && p_patcher_args+=("--exclusive")
 
 	local tried_dl=()
@@ -1020,6 +1025,7 @@ build_rv() {
 	local rv_brand_f=${args[rv_brand],,}
 	rv_brand_f=${rv_brand_f// /-}
 	if [ "${args[patcher_args]}" ]; then p_patcher_args+=("${args[patcher_args]}"); fi
+<<<<<<< HEAD
 =======
 	if [ "$mode_arg" = module ]; then
 		build_mode_arr=(module)
@@ -1032,6 +1038,8 @@ build_rv() {
 	local rv_brand_f=${args[rv_brand],,}
 	rv_brand_f=${rv_brand_f// /-}
 >>>>>>> 71b9976 (Initial commit)
+=======
+>>>>>>> 9d2190d (Update utils.sh and build.sh)
 	for build_mode in "${build_mode_arr[@]}"; do
 		patcher_args=("${p_patcher_args[@]}")
 		pr "Building '${table}' in '$build_mode' mode"
