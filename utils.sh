@@ -42,7 +42,14 @@ toml_get() {
 REBUILD=${REBUILD:-false}
 OS=$(uname -o)
 
-toml_prep() { __TOML__=$($TOML --output json --file "$1" .); }
+toml_prep() {
+	if [ ! -f "$1" ]; then return 1; fi
+	if [ "${1##*.}" == toml ]; then
+		__TOML__=$($TOML --output json --file "$1" .)
+	elif [ "${1##*.}" == json ]; then
+		__TOML__=$(cat "$1")
+	else abort "config extension not supported"; fi
+}
 toml_get_table_names() { jq -r -e 'to_entries[] | select(.value | type == "object") | .key' <<<"$__TOML__"; }
 toml_get_table_main() { jq -r -e 'to_entries | map(select(.value | type != "object")) | from_entries' <<<"$__TOML__"; }
 toml_get_table() { jq -r -e ".\"${1}\"" <<<"$__TOML__"; }
@@ -273,10 +280,14 @@ get_rv_prebuilts() {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 set_prebuilts() {
 =======
 get_prebuilts() {
 >>>>>>> 71b9976 (Initial commit)
+=======
+set_prebuilts() {
+>>>>>>> 096bff3 (Update utils.sh and build.sh)
 	APKSIGNER="${BIN_DIR}/apksigner.jar"
 	if [ "$OS" = Android ]; then
 		local arch
@@ -290,6 +301,7 @@ get_prebuilts() {
 		HTMLQ="${BIN_DIR}/htmlq/htmlq-x86_64"
 		TOML="${BIN_DIR}/toml/tq-x86_64"
 	fi
+<<<<<<< HEAD
 }
 
 config_update() {
@@ -310,16 +322,22 @@ config_update() {
 	gh_dl "${MODULE_TEMPLATE_DIR}/bin/arm/cmpr" "https://github.com/j-hc/cmpr/releases/latest/download/cmpr-armeabi-v7a"
 	gh_dl "${MODULE_TEMPLATE_DIR}/bin/x86/cmpr" "https://github.com/j-hc/cmpr/releases/latest/download/cmpr-x86"
 	gh_dl "${MODULE_TEMPLATE_DIR}/bin/x64/cmpr" "https://github.com/j-hc/cmpr/releases/latest/download/cmpr-x86_64"
+=======
+>>>>>>> 096bff3 (Update utils.sh and build.sh)
 }
 
 config_update() {
 	declare -A sources
 	: >"$TEMP_DIR"/skipped
+<<<<<<< HEAD
 	local conf=""
 	# shellcheck disable=SC2154
 	conf+=$(sed '1d' <<<"$main_config_t")
 	conf+=$'\n'
 >>>>>>> 71b9976 (Initial commit)
+=======
+	local upped=()
+>>>>>>> 096bff3 (Update utils.sh and build.sh)
 	local prcfg=false
 	for table_name in $(toml_get_table_names); do
 		if [ -z "$table_name" ]; then continue; fi
@@ -350,6 +368,7 @@ config_update() {
 					sources["$PATCHES_SRC/$PATCHES_VER"]=1
 					prcfg=true
 					upped+=("$table_name")
+<<<<<<< HEAD
 				else
 					echo "$OP" >>"$TEMP_DIR"/skipped
 =======
@@ -395,6 +414,8 @@ config_update() {
 					prcfg=true
 					conf+="$t"
 					conf+=$'\n'
+=======
+>>>>>>> 096bff3 (Update utils.sh and build.sh)
 				else
 <<<<<<< HEAD
 					echo "Patches: ${PATCHES_SRC%%/*}/${cur_patches}  " >>$TEMP_DIR/skipped
@@ -407,6 +428,9 @@ config_update() {
 		fi
 	done
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 096bff3 (Update utils.sh and build.sh)
 	if [ "$prcfg" = true ]; then
 		local query=""
 		for table in "${upped[@]}"; do
@@ -415,9 +439,12 @@ config_update() {
 		done
 		jq "to_entries | map(select(${query} or (.value | type != \"object\"))) | from_entries" <<<"$__TOML__"
 	fi
+<<<<<<< HEAD
 =======
 	if [ "$prcfg" = true ]; then echo "$conf"; fi
 >>>>>>> 71b9976 (Initial commit)
+=======
+>>>>>>> 096bff3 (Update utils.sh and build.sh)
 }
 
 _req() {

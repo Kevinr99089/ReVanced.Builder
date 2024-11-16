@@ -16,6 +16,9 @@ fi
 source utils.sh
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 096bff3 (Update utils.sh and build.sh)
 set_prebuilts
 
 vtf() { if ! isoneof "${1}" "true" "false"; then abort "ERROR: '${1}' is not a valid option for '${2}': only true or false is allowed"; fi; }
@@ -47,8 +50,11 @@ fi
 REMOVE_RV_INTEGRATIONS_CHECKS=$(toml_get "$main_config_t" remove-rv-integrations-checks) || REMOVE_RV_INTEGRATIONS_CHECKS="true"
 =======
 REMOVE_RV_INTEGRATIONS_CHECKS=$(toml_get "$main_config_t" remove-rv-integrations-checks) || REMOVE_RV_INTEGRATIONS_CHECKS="true"
+<<<<<<< HEAD
 
 >>>>>>> 9eb962c (Multiple files updated (Build/utils.sh))
+=======
+>>>>>>> 096bff3 (Update utils.sh and build.sh)
 DEF_PATCHES_VER=$(toml_get "$main_config_t" patches-version) || DEF_PATCHES_VER="latest"
 DEF_CLI_VER=$(toml_get "$main_config_t" cli-version) || DEF_CLI_VER="latest"
 DEF_PATCHES_SRC=$(toml_get "$main_config_t" patches-source) || DEF_PATCHES_SRC="ReVanced/revanced-patches"
@@ -85,6 +91,7 @@ if [ "$ENABLE_MAGISK_UPDATE" = true ] && [ -z "${GITHUB_REPOSITORY-}" ]; then
 	ENABLE_MAGISK_UPDATE=false
 fi
 <<<<<<< HEAD
+<<<<<<< HEAD
 if ((COMPRESSION_LEVEL > 9)) || ((COMPRESSION_LEVEL < 0)); then abort "compression-level must be within 0-9"; fi
 
 jq --version >/dev/null || abort "\`jq\` is not installed. install it with 'apt install jq' or equivalent"
@@ -104,18 +111,20 @@ gh_dl "${MODULE_TEMPLATE_DIR}/bin/x64/cmpr" "https://github.com/j-hc/cmpr/releas
 =======
 # -----------------
 
+=======
+>>>>>>> 096bff3 (Update utils.sh and build.sh)
 if ((COMPRESSION_LEVEL > 9)) || ((COMPRESSION_LEVEL < 0)); then abort "compression-level must be within 0-9"; fi
 
-# -- check_deps --
 jq --version >/dev/null || abort "\`jq\` is not installed. install it with 'apt install jq' or equivalent"
 java --version >/dev/null || abort "\`openjdk 17\` is not installed. install it with 'apt install openjdk-17-jre' or equivalent"
 zip --version >/dev/null || abort "\`zip\` is not installed. install it with 'apt install zip' or equivalent"
-# ----------------
+
 rm -rf revanced-magisk/bin/*/tmp.*
 if [ "$(echo "$TEMP_DIR"/*-rv/changelog.md)" ]; then
 	: >"$TEMP_DIR"/*-rv/changelog.md || :
 fi
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 get_prebuilts
 
@@ -136,6 +145,14 @@ set_prebuilts() {
 
 =======
 >>>>>>> d4ad2aa (Update utils.sh and build.sh)
+=======
+mkdir -p ${MODULE_TEMPLATE_DIR}/bin/arm64 ${MODULE_TEMPLATE_DIR}/bin/arm ${MODULE_TEMPLATE_DIR}/bin/x86 ${MODULE_TEMPLATE_DIR}/bin/x64
+gh_dl "${MODULE_TEMPLATE_DIR}/bin/arm64/cmpr" "https://github.com/j-hc/cmpr/releases/latest/download/cmpr-arm64-v8a"
+gh_dl "${MODULE_TEMPLATE_DIR}/bin/arm/cmpr" "https://github.com/j-hc/cmpr/releases/latest/download/cmpr-armeabi-v7a"
+gh_dl "${MODULE_TEMPLATE_DIR}/bin/x86/cmpr" "https://github.com/j-hc/cmpr/releases/latest/download/cmpr-x86"
+gh_dl "${MODULE_TEMPLATE_DIR}/bin/x64/cmpr" "https://github.com/j-hc/cmpr/releases/latest/download/cmpr-x86_64"
+
+>>>>>>> 096bff3 (Update utils.sh and build.sh)
 declare -A cliriplib
 idx=0
 for table_name in $(toml_get_table_names); do
