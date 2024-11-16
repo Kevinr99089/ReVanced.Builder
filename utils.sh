@@ -42,19 +42,19 @@ toml_get() {
 REBUILD=${REBUILD:-false}
 OS=$(uname -o)
 
-toml_prep() { __TOML__=$(tr -d '\t\r' <<<"$1" | tr "'" '"' | grep -o '^[^#]*' | grep -v '^$' | sed -r 's/(\".*\")|\s*/\1/g; 1i []'); }
-toml_get_table_names() {
-	local tn
-	tn=$(grep -x '\[.*\]' <<<"$__TOML__" | tr -d '[]') || return 1
-	if [ "$(sort <<<"$tn" | uniq -u | wc -l)" != "$(wc -l <<<"$tn")" ]; then
-		abort "ERROR: Duplicate tables in TOML"
-	fi
-	echo "$tn"
-}
-toml_get_table() { sed -n "/\[${1}]/,/^\[.*]$/p" <<<"$__TOML__" | sed '${/^\[/d;}'; }
+toml_prep() { __TOML__=$($TOML --output json --file "$1" .); }
+toml_get_table_names() { jq -r -e 'to_entries[] | select(.value | type == "object") | .key' <<<"$__TOML__"; }
+toml_get_table_main() { jq -r -e 'to_entries | map(select(.value | type != "object")) | from_entries' <<<"$__TOML__"; }
+toml_get_table() { jq -r -e ".\"${1}\"" <<<"$__TOML__"; }
 toml_get() {
-	local table=$1 key=$2 val
-	val=$(grep -m 1 "^${key}=" <<<"$table") && sed -e "s/^\"//; s/\"$//" <<<"${val#*=}"
+	local op
+	op=$(jq -r ".\"${2}\" | values" <<<"$1")
+	if [ "$op" ]; then
+		op="${op#"${op%%[![:space:]]*}"}"
+		op="${op%"${op##*[![:space:]]}"}"
+		op=${op//"'"/'"'}
+		echo "$op"
+	else return 1; fi
 }
 # ---------------------------------------------------
 >>>>>>> 71b9976 (Initial commit)
@@ -284,6 +284,7 @@ get_prebuilts() {
 		HTMLQ="${BIN_DIR}/htmlq/htmlq-${arch}"
 		AAPT2="${BIN_DIR}/aapt2/aapt2-${arch}"
 <<<<<<< HEAD
+<<<<<<< HEAD
 		TOML="${BIN_DIR}/toml/tq-${arch}"
 	else
 		HTMLQ="${BIN_DIR}/htmlq/htmlq-x86_64"
@@ -297,8 +298,12 @@ config_update() {
 	: >"$TEMP_DIR"/skipped
 	local upped=()
 =======
+=======
+		TOML="${BIN_DIR}/toml/tq-${arch}"
+>>>>>>> d4ad2aa (Update utils.sh and build.sh)
 	else
 		HTMLQ="${BIN_DIR}/htmlq/htmlq-x86_64"
+		TOML="${BIN_DIR}/toml/tq-x86_64"
 	fi
 	mkdir -p ${MODULE_TEMPLATE_DIR}/bin/arm64 ${MODULE_TEMPLATE_DIR}/bin/arm ${MODULE_TEMPLATE_DIR}/bin/x86 ${MODULE_TEMPLATE_DIR}/bin/x64
 	gh_dl "${MODULE_TEMPLATE_DIR}/bin/arm64/cmpr" "https://github.com/j-hc/cmpr/releases/latest/download/cmpr-arm64-v8a"
@@ -828,9 +833,12 @@ patch_apk() {
 	local stock_input=$1 patched_apk=$2 patcher_args=$3 rv_cli_jar=$4 rv_patches_jar=$5
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 	# TODO: --options
 >>>>>>> 4ce26bd (Update utils.sh and build.sh)
+=======
+>>>>>>> d4ad2aa (Update utils.sh and build.sh)
 	local cmd="java -jar $rv_cli_jar patch $stock_input --purge -o $patched_apk -p $rv_patches_jar --keystore=ks.keystore \
 --keystore-entry-password=123456789 --keystore-password=123456789 --signer=jhc --keystore-entry-alias=jhc $patcher_args"
 	if [ "$OS" = Android ]; then cmd+=" --custom-aapt2-binary=${AAPT2}"; fi

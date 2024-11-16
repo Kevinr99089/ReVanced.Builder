@@ -15,6 +15,7 @@ fi
 
 source utils.sh
 <<<<<<< HEAD
+<<<<<<< HEAD
 set_prebuilts
 
 vtf() { if ! isoneof "${1}" "true" "false"; then abort "ERROR: '${1}' is not a valid option for '${2}': only true or false is allowed"; fi; }
@@ -23,13 +24,20 @@ vtf() { if ! isoneof "${1}" "true" "false"; then abort "ERROR: '${1}' is not a v
 toml_prep "${1:-config.toml}" || abort "could not find config file '${1:-config.toml}'\n\tUsage: $0 <config.toml>"
 main_config_t=$(toml_get_table_main)
 =======
+=======
+get_prebuilts
+>>>>>>> d4ad2aa (Update utils.sh and build.sh)
 
 vtf() { if ! isoneof "${1}" "true" "false"; then abort "ERROR: '${1}' is not a valid option for '${2}': only true or false is allowed"; fi; }
 
-toml_prep "$(cat 2>/dev/null "${1:-config.toml}")" || abort "could not find config file '${1:-config.toml}'\n\tUsage: $0 <config.toml>"
 # -- Main config --
+<<<<<<< HEAD
 main_config_t=$(toml_get_table "")
 >>>>>>> 71b9976 (Initial commit)
+=======
+toml_prep "${1:-config.toml}" || abort "could not find config file '${1:-config.toml}'\n\tUsage: $0 <config.toml>"
+main_config_t=$(toml_get_table_main)
+>>>>>>> d4ad2aa (Update utils.sh and build.sh)
 COMPRESSION_LEVEL=$(toml_get "$main_config_t" compression-level) || COMPRESSION_LEVEL="9"
 if ! PARALLEL_JOBS=$(toml_get "$main_config_t" parallel-jobs); then
 	if [ "$OS" = Android ]; then PARALLEL_JOBS=1; else PARALLEL_JOBS=$(nproc); fi
@@ -108,6 +116,7 @@ if [ "$(echo "$TEMP_DIR"/*-rv/changelog.md)" ]; then
 	: >"$TEMP_DIR"/*-rv/changelog.md || :
 fi
 
+<<<<<<< HEAD
 get_prebuilts
 
 set_prebuilts() {
@@ -125,12 +134,17 @@ set_prebuilts() {
 }
 >>>>>>> 71b9976 (Initial commit)
 
+=======
+>>>>>>> d4ad2aa (Update utils.sh and build.sh)
 declare -A cliriplib
 idx=0
 for table_name in $(toml_get_table_names); do
 	if [ -z "$table_name" ]; then continue; fi
 	t=$(toml_get_table "$table_name")
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d4ad2aa (Update utils.sh and build.sh)
 	enabled=$(toml_get "$t" enabled) || enabled=true
 	vtf "$enabled" "enabled"
 	if [ "$enabled" = false ]; then continue; fi
