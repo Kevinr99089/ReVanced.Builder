@@ -1,3 +1,4 @@
+
 name: Build Modules
 on:
   workflow_call:
@@ -25,33 +26,16 @@ jobs:
           fetch-depth: 0
           submodules: true
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 0d64777 (Update build.yml)
       - name: Update config
         if: ${{ inputs.from_ci }}
         run: |
           if git checkout origin/update build.md; then
             UPDATE_CFG=$(./build.sh config.toml --config-update)
             if [ "$UPDATE_CFG" ]; then
-<<<<<<< HEAD
-<<<<<<< HEAD
-              echo "$UPDATE_CFG" > config.json
-=======
-              echo "$UPDATE_CFG" > config.toml
->>>>>>> 71b9976 (Initial commit)
-            fi
-          fi
-
-=======
->>>>>>> f70e522 (Build.yml updated)
-=======
               echo "$UPDATE_CFG" > config.json
             fi
           fi
 
->>>>>>> 0d64777 (Update build.yml)
       - name: Get next version code
         id: next_ver_code
         env:
@@ -61,13 +45,8 @@ jobs:
           if [ -z "$TAG" ]; then TAG=0; fi
           echo "NEXT_VER_CODE=$((TAG + 1))" >> $GITHUB_OUTPUT
 
-      - name: Build modules/ReVanced
-<<<<<<< HEAD
-        run: ./build.sh config.toml
->>>>>>> 71b9976 (Initial commit)
-=======
+      - name: Build modules/APKs
         run: if [ -f "config.json" ]; then ./build.sh config.json; else ./build.sh config.toml; fi
->>>>>>> 0d64777 (Update build.yml)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: $GITHUB_REPOSITORY
@@ -100,21 +79,8 @@ jobs:
           cp -f build.tmp build.md
           get_update_json() {
             echo "{
-<<<<<<< HEAD
-<<<<<<< HEAD
             \"version\": \"$1\",
-<<<<<<< HEAD
             \"versionCode\": ${{ steps.next_ver_code.outputs.NEXT_VER_CODE }},
-=======
-            \"versionCode\": ${{ steps.next_ver_code.outputs.NEXT_VER_CODE}},
->>>>>>> 71b9976 (Initial commit)
-=======
-            \"version\": \"$1 (${{ steps.next_ver_code.outputs.NEXT_VER_CODE }})\",
-=======
-            \"version\": \"$1\",
->>>>>>> 0d64777 (Update build.yml)
-            \"versionCode\": ${{ steps.next_ver_code.outputs.NEXT_VER_CODE }},
->>>>>>> f70e522 (Build.yml updated)
             \"zipUrl\": \"$2\",
             \"changelog\": \"https://raw.githubusercontent.com/$GITHUB_REPOSITORY/update/build.md\"
           }"
