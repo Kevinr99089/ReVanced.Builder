@@ -1,5 +1,7 @@
 # <p align="center"> Welcome to ReVanced.Builder🛠️
 
+<p align="center"> I'm thinking of closing this repository.
+
 ## <p align="center"> Available apps :
 - YT (RV) and YT Music (RV).
 > To use these applications, you need to install [MicroG-RE](https://github.com/WSTxda/MicroG-RE/releases/latest). View [applied patches](https://github.com/kevinr99089/ReVanced.Builder/blob/main/config.toml).
