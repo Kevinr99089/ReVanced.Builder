@@ -1,6 +1,6 @@
 # <p align="center"> Welcome to ReVanced.Builder🛠️
 
-<p align="center"> I'm thinking of closing this repository.
+<p align="center"> This repository will be archived on February 01, 2025.
 
 ## <p align="center"> Available apps :
 - YT (RV) and YT Music (RV).
