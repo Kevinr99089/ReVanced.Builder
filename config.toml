@@ -8,8 +8,3 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube/"
 [Music] # Default patches are applied:
 apkmirror-dlurl = "https://www.apkmirror.com/apk/google-inc/youtube-music/"
 arch = "arm64-v8a"
-
-[Spotify-XManager] # Exclusive patches are applied, line 13:
-exclusive-patches = true
-included-patches = "'Spoof signature'"
-fileport-dlurl = "https://fileport.io/KqaSfLUgBeqG"
