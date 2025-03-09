@@ -11,7 +11,7 @@
 
 - [Install ReVanced](https://github.com/kevinr99089/ReVanced.Builder/blob/main/install.md)
 
--  [Builds for Extended](https://github.com/Kevinr99089/Extended.Builder), [Builds for Anddea](https://github.com/Kevinr99089/ReReX.Builder) (unavailable).
+-  [Builds for Extended](https://github.com/Kevinr99089/Extended.Builder), [Builds for Anddea](https://github.com/Kevinr99089/Anddea.Builder) (unavailable).
 
 ## <p align="center"> Thanks to :
 > [!NOTE]
