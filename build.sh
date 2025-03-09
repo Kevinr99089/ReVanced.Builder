@@ -130,6 +130,20 @@ for table_name in $(toml_get_table_names); do
 		app_args[filereport_dlurl]=${app_args[filereport_dlurl]%/}
 		app_args[dl_from]=filereport
 	} || app_args[filereport_dlurl]=""
+ 	if [ "${app_args[dl_from]}" = "fileport" ]; then
+    echo "Downloading from FilePort: ${app_args[fileport_dlurl]}"
+    wget --content-disposition -O "Spotify.apk" "${app_args[fileport_dlurl]}" || \
+    curl -L -o "Spotify.apk" "${app_args[fileport_dlurl]}"
+    if [ $? -ne 0 ]; then
+        abort "ERROR: FilePort download failed."
+    fi
+
+    if [ -f "Spotify.apk" ]; then
+        echo "Download successful: Spotify.apk"
+        app_args[pkg_name]="com.spotify.music"
+    else
+        abort "ERROR: FilePort download failed, file not found."
+    fi
 	fi
 
 	app_args[include_stock]=$(toml_get "$t" include-stock) || app_args[include_stock]=true && vtf "${app_args[include_stock]}" "include-stock"
